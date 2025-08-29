@@ -1,0 +1,197 @@
+{
+  "_meta": {
+    "display_name": "Italiano",
+    "language_code": "it",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Benvenuto in Cruise"
+  },
+  "menu": {
+    "file": "File",
+    "edit": "Modifica",
+    "view": "Visualizza",
+    "tools": "Strumenti",
+    "help": "Aiuto",
+    "language": "Lingua",
+    "settings": "Impostazioni",
+    "model_settings": "Impostazioni Modelli",
+    "exit": "Esci",
+    "file_actions": {
+      "open_project": "Apri Progetto...",
+      "save": "Salva",
+      "save_as": "Salva con nome..."
+    }
+  },
+  "buttons": {
+    "start": "Avvia",
+    "stop": "Ferma",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "browse": "Sfoglia",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "ok": "OK",
+    "apply": "Applica",
+    "close": "Chiudi",
+    "clear": "Cancella",
+    "copy": "Copia",
+    "play": "Riproduci"
+  },
+  "transcription": {
+    "title": "Trascrizione",
+    "start_recording": "Inizia Registrazione",
+    "stop_recording": "Ferma Registrazione",
+    "processing": "Elaborazione audio in corso...",
+    "completed": "Trascrizione completata",
+    "failed": "Trascrizione fallita",
+    "no_audio": "Nessun audio rilevato",
+    "select_file": "Seleziona File Audio",
+    "supported_formats": "Formati supportati: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "Appunti",
+    "study_mode_section_title": "Modalità studio",
+    "ask_question_placeholder": "Fai una domanda..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "Spiegazione IA",
+      "get_explanation": "Ottieni Spiegazione IA",
+      "stop_ai": "Ferma IA"
+    },
+    "prompts": {
+      "context_intro": "Ecco una trascrizione di una conversazione:",
+      "explanation_request": "Puoi aiutarmi a capire questa frase in italiano?",
+      "explanation_guidelines": "Guida l'utente verso la comprensione ponendo domande ponderate e fornendo indizi. Evita di dare risposte dirette.",
+      "language_instruction": "!CRITICO: DEVI rispondere esclusivamente in italiano, indipendentemente dalla lingua utilizzata nella trascrizione.",
+      "format_instruction": "!IMPORTANTE: Formatta la tua risposta usando Markdown per chiarezza e leggibilità.",
+      "writing_instruction": "Scrivi la tua risposta in italiano chiaro e semplice come mentore benevolo.",
+      "structure_instruction": "Struttura la tua guida con domande che portano alla scoperta e indizi sottili.",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "Sei Cruise, un mentore educativo amichevole e professionale che si concentra sull'insegnare in modo chiaro e diretto. Fornisci spiegazioni utili con esempi concreti dal testo trascritto, invece di fare domande.",
+          "approach": "Il tuo approccio è essere un insegnante esperto che spiega i concetti chiaramente usando esempi specifici e citazioni dal testo trascritto. Ti concentri sulla trasmissione della comprensione attraverso spiegazioni chiare piuttosto che fare domande.",
+          "context_intro": "Ecco una trascrizione di una conversazione che fornisce un ricco contesto per la comprensione:",
+          "explanation_request": "L'utente sta chiedendo: \"{sentence}\"\n\nCome Cruise, fornisci una spiegazione chiara e focalizzata sull'insegnamento che usa esempi specifici e citazioni dal testo trascritto per illustrare i tuoi punti:",
+          "guidelines": [
+            "Fornisci spiegazioni chiare e dirette con esempi dal testo",
+            "Usa citazioni specifiche dalla trascrizione per illustrare",
+            "Concentrati sull'insegnare attraverso esempi concreti, non domande",
+            "Spiega il contesto e il significato con evidenze dal testo",
+            "Sii informativo e didattico senza essere eccessivamente entusiasta",
+            "Usa aneddoti ed esempi dal contenuto trascritto",
+            "Evita di fare domande; fornisci invece spiegazioni chiare"
+          ],
+          "pedagogical_principles": [
+            "Insegna attraverso esempi concreti dal materiale",
+            "Usa evidenze testuali per supportare le spiegazioni",
+            "Fornisci contesto con il contenuto trascritto",
+            "Spiega i concetti chiaramente e direttamente",
+            "Collega le idee con esempi specifici dal testo",
+            "Concentrati sulla comprensione attraverso la spiegazione, non l'interrogazione"
+          ],
+          "response_structure": "Inizia con una spiegazione chiara del concetto, poi fornisci esempi specifici e citazioni dal testo trascritto per illustrare i tuoi punti. Concludi con una sintesi che unisce tutto insieme.",
+          "language_instruction": "!CRITICO: DEVI rispondere esclusivamente in italiano, indipendentemente dalla lingua utilizzata nella trascrizione. Usa un linguaggio chiaro e didattico facile da capire.",
+          "format_instruction": "!IMPORTANTE: Formatta la tua risposta usando Markdown per chiarezza e leggibilità. Usa un tono conversazionale e amichevole.",
+          "tone_instruction": "Sii caloroso e incoraggiante, come un insegnante esperto che vuole aiutare a spiegare le cose chiaramente. Fornisci spiegazioni che favoriscono la comprensione e usa esempi concreti dal testo."
+        }
+    }
+  },
+  "setup": {
+    "title": "Impostazioni Modelli",
+    "subtitle": "Configura i tuoi modelli di trascrizione e IA",
+    "welcome_title": "Benvenuto in Cruise",
+    "welcome_subtitle": "Configuriamo il tuo ambiente di trascrizione",
+    "system_check": "Controllo Sistema",
+    "model_selection": "Selezione Modello",
+    "whisper_model": "Modello Whisper",
+    "whisper_model_title": "Modello Whisper",
+    "whisper_model_desc": "Seleziona il modello Whisper per la trascrizione audio",
+    "ollama_model": "Modello Ollama",
+    "ollama_model_title": "Modello Ollama",
+    "ollama_model_desc": "Seleziona il modello Ollama per le spiegazioni IA",
+    "model_label": "Modello:",
+    "checking_system": "Controllo dei requisiti di sistema...",
+    "download_model": "Scarica Modello",
+    "download_button": "Scarica Modello",
+    "model_downloaded": "Modello scaricato con successo",
+    "setup_complete": "Configurazione Completata",
+    "skip_welcome": "Salta la schermata di benvenuto la prossima volta",
+    "skip_checkbox": "Salta la schermata di benvenuto la prossima volta",
+    "use_defaults_button": "Usa Predefiniti",
+    "apply_button": "Applica",
+    "ollama_status_installed": "Ollama è installato e in esecuzione.",
+    "ollama_status_not_found": "Installazione Ollama non trovata.",
+    "ollama_status_error": "Errore nel controllo di Ollama: {error}",
+    "ollama_not_installed": "Ollama non installato"
+  },
+  "dialogs": {
+    "error": "Errore",
+    "warning": "Avviso",
+    "info": "Informazione",
+    "success": "Successo",
+    "confirmation": "Conferma",
+    "delete_confirmation": "Sei sicuro di voler eliminare questo elemento?",
+    "unsaved_changes": "Hai modifiche non salvate. Vuoi salvarle?",
+    "file_not_found": "File non trovato: {filename}",
+    "invalid_format": "Formato file non valido",
+    "processing_error": "Si è verificato un errore durante l'elaborazione",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "Pronto",
+    "recording": "Registrazione...",
+    "processing": "Elaborazione...",
+    "completed": "Completato",
+    "error": "Errore",
+    "connecting": "Connessione...",
+    "connected": "Connesso",
+    "disconnected": "Disconnesso"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "general": "Generale",
+    "audio": "Audio",
+    "models": "Modelli",
+    "language": "Lingua",
+    "theme": "Tema",
+    "auto_save": "Salvataggio Automatico",
+    "save_location": "Posizione di Salvataggio",
+    "audio_quality": "Qualità Audio",
+    "sample_rate": "Frequenza di Campionamento",
+    "language_changed": "Lingua cambiata in {language}",
+    "language_change_failed": "Cambio lingua fallito",
+    "save": "Salva",
+    "cancel": "Annulla"
+  },
+  "messages": {
+    "audio_load_error": "Impossibile caricare il file audio: {0}",
+    "no_audio_file": "Seleziona prima un file audio.",
+    "project_saved": "Progetto salvato con successo.",
+    "project_save_error": "Errore nel salvare il progetto: {0}",
+    "no_projects": "Nessun progetto salvato da aprire.",
+    "project_load_error": "Impossibile caricare il progetto selezionato.",
+    "nothing_to_copy": "Niente da copiare. Trascrivi prima l'audio.",
+    "transcribe_first": "Trascrivi prima l'audio per creare note.",
+    "transcription_start_error": "Impossibile avviare la trascrizione: {0}",
+    "transcription_complete": "Trascrizione completata con successo!",
+    "transcription_error": "Trascrizione fallita: {0}",
+    "transcription_copied": "Trascrizione copiata negli appunti!",
+    "clear_all_confirmation": "Sei sicuro di voler cancellare tutti i dati di trascrizione?"
+  },
+  "tooltips": {
+    "transcribe_audio": "Trascrivi Audio",
+    "browse_for_audio_file": "Cerca File Audio",
+    "play_pause_audio": "Riproduci/Pausa Audio (Barra spaziatrice)",
+    "add_note": "Aggiungi Nota",
+    "copy_transcription": "Copia Trascrizione",
+    "clear_all": "Cancella Tutto"
+  }
+}

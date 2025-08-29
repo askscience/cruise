@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "Català",
+    "language_code": "ca",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Benvingut a Cruise"
+  },
+  "menu": {
+    "file": "Fitxer",
+    "edit": "Edita",
+    "view": "Visualitza",
+    "tools": "Eines",
+    "help": "Ajuda",
+    "language": "Idioma",
+    "settings": "Configuració",
+    "model_settings": "Configuració de Models",
+    "exit": "Surt",
+    "file_actions": {
+      "open_project": "Obre Projecte...",
+      "save": "Desa",
+      "save_as": "Desa com a..."
+    }
+  },
+  "buttons": {
+    "start": "Inicia",
+    "stop": "Atura",
+    "pause": "Pausa",
+    "resume": "Reprèn",
+    "browse": "Navega",
+    "save": "Desa",
+    "cancel": "Cancel·la",
+    "ok": "D'acord",
+    "apply": "Aplica",
+    "close": "Tanca",
+    "clear": "Neteja",
+    "copy": "Copia",
+    "play": "Reprodueix"
+  },
+  "transcription": {
+    "title": "Transcripció",
+    "start_recording": "Inicia Gravació",
+    "stop_recording": "Atura Gravació",
+    "processing": "Processant àudio...",
+    "completed": "Transcripció completada",
+    "failed": "Transcripció fallida",
+    "no_audio": "No s'ha detectat àudio",
+    "select_file": "Selecciona Fitxer d'Àudio",
+    "supported_formats": "Formats suportats: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "Notes",
+    "study_mode_section_title": "Mode d'estudi",
+    "ask_question_placeholder": "Fes una pregunta..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "Explicació IA",
+      "get_explanation": "Obtén Explicació IA",
+      "stop_ai": "Atura IA"
+    },
+    "prompts": {
+      "context_intro": "Aquí hi ha una transcripció d'una conversa:",
+      "explanation_request": "Pots ajudar-me a entendre aquesta frase en català?",
+        "explanation_guidelines": "Guia l'usuari cap a la comprensió fent preguntes reflexives i proporcionant pistes. Evita donar respostes directes.",
+        "language_instruction": "!CRÍTIC: HAS de respondre exclusivament en català, independentment de l'idioma utilitzat en la transcripció.",
+        "format_instruction": "!IMPORTANT: Formata la teva resposta utilitzant Markdown per claredat i llegibilitat.",
+        "writing_instruction": "Escriu la teva resposta en català clar i simple com un mentor benevolent.",
+        "structure_instruction": "Estructura la teva guia amb preguntes que porten al descobriment i pistes subtils.",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "Ets Cruise, un mentor educatiu amigable i professional que es centra en ensenyar de manera clara i directa. Proporciones explicacions útils amb exemples concrets del text transcrit, en lloc de fer preguntes.",
+          "approach": "El teu enfocament és ser un professor expert que explica conceptes clarament utilitzant exemples específics i cites del text transcrit. Et centres en transmetre comprensió a través d'explicacions clares en lloc de fer preguntes.",
+          "context_intro": "Aquí hi ha una transcripció d'una conversa que proporciona un context ric per a la comprensió:",
+          "explanation_request": "L'usuari està preguntant: \"{sentence}\"\n\nCom a Cruise, proporciona una explicació clara i centrada en l'ensenyament que utilitza exemples específics i cites del text transcrit per il·lustrar els teus punts:",
+          "guidelines": [
+            "Proporciona explicacions clares i directes amb exemples del text",
+            "Utilitza cites específiques de la transcripció per il·lustrar",
+            "Centra't en ensenyar a través d'exemples concrets, no preguntes",
+            "Explica context i significat amb evidències del text",
+            "Sigues informatiu i didàctic sense ser excessivament entusiasta",
+            "Utilitza anècdotes i exemples del contingut transcrit",
+            "Evita fer preguntes; proporciona explicacions clares en el seu lloc"
+          ],
+          "pedagogical_principles": [
+            "Ensenya a través d'exemples concrets del material",
+            "Utilitza evidències textuals per donar suport a les explicacions",
+            "Proporciona context amb el contingut transcrit",
+            "Explica conceptes clara i directament",
+            "Connecta idees amb exemples específics del text",
+            "Centra't en la comprensió a través de l'explicació, no l'interrogatori"
+          ],
+          "response_structure": "Comença amb una explicació clara del concepte, després proporciona exemples específics i cites del text transcrit per il·lustrar els teus punts. Conclou amb una síntesi que ho uneix tot.",
+          "language_instruction": "!CRÍTIC: HAS de respondre exclusivament en català, independentment de l'idioma utilitzat en la transcripció. Utilitza un llenguatge clar i didàctic que sigui fàcil d'entendre.",
+          "format_instruction": "!IMPORTANT: Formata la teva resposta utilitzant Markdown per claredat i llegibilitat. Utilitza un to conversacional i amigable.",
+          "tone_instruction": "Sigues càlid i encoratjador, com un professor expert que vol ajudar a explicar les coses clarament. Proporciona explicacions que fomentin la comprensió i utilitza exemples concrets del text."
+        }
+    }
+  },
+  "setup": {
+    "welcome_title": "Benvingut a Cruise",
+    "welcome_subtitle": "Configurem el teu entorn de transcripció",
+    "system_check": "Comprovació del Sistema",
+    "model_selection": "Selecció de Model",
+    "whisper_model": "Model Whisper",
+    "ollama_model": "Model Ollama",
+    "checking_system": "Comprovant els requisits del sistema...",
+    "download_model": "Descarrega Model",
+    "model_downloaded": "Model descarregat amb èxit",
+    "setup_complete": "Configuració Completada",
+    "skip_welcome": "Omet la pantalla de benvinguda la propera vegada",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "Error",
+    "warning": "Avís",
+    "info": "Informació",
+    "success": "Èxit",
+    "confirmation": "Confirmació",
+    "delete_confirmation": "Estàs segur que vols eliminar aquest element?",
+    "unsaved_changes": "Tens canvis sense desar. Vols desar-los?",
+    "file_not_found": "Fitxer no trobat: {filename}",
+    "invalid_format": "Format de fitxer no vàlid",
+    "processing_error": "S'ha produït un error durant el processament",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "Llest",
+    "recording": "Gravant...",
+    "processing": "Processant...",
+    "completed": "Completat",
+    "error": "Error",
+    "connecting": "Connectant...",
+    "connected": "Connectat",
+    "disconnected": "Desconnectat"
+  },
+  "settings": {
+    "title": "Configuració",
+    "general": "General",
+    "audio": "Àudio",
+    "models": "Models",
+    "language": "Idioma",
+    "theme": "Tema",
+    "auto_save": "Desament Automàtic",
+    "save_location": "Ubicació de Desament",
+    "audio_quality": "Qualitat d'Àudio",
+    "sample_rate": "Freqüència de Mostreig",
+    "language_changed": "Idioma canviat a {language}",
+    "language_change_failed": "Error en canviar l'idioma"
+  },
+  "messages": {
+    "audio_load_error": "No s'ha pogut carregar el fitxer d'àudio: {0}",
+    "no_audio_file": "Seleccioneu primer un fitxer d'àudio.",
+    "project_saved": "Projecte desat amb èxit.",
+    "project_save_error": "Error en desar el projecte: {0}",
+    "no_projects": "No hi ha projectes desats per obrir.",
+    "project_load_error": "No s'ha pogut carregar el projecte seleccionat.",
+    "nothing_to_copy": "No hi ha res per copiar. Transcriviu primer l'àudio.",
+    "transcribe_first": "Transcriviu primer l'àudio per crear notes.",
+    "transcription_start_error": "No s'ha pogut iniciar la transcripció: {0}",
+    "transcription_complete": "Transcripció completada amb èxit!",
+    "transcription_error": "Ha fallat la transcripció: {0}",
+    "transcription_copied": "Transcripció copiada al porta-retalls!",
+    "clear_all_confirmation": "Esteu segur que voleu esborrar totes les dades de transcripció?"
+  },
+  "tooltips": {
+    "transcribe_audio": "Transcriure Àudio",
+    "browse_for_audio_file": "Cercar Fitxer d'Àudio",
+    "play_pause_audio": "Reproduir/Pausar Àudio (Barra espaiadora)",
+    "add_note": "Afegir Nota",
+    "copy_transcription": "Copiar Transcripció",
+    "clear_all": "Esborrar Tot"
+  }
+}

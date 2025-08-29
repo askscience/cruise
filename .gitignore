@@ -1,0 +1,51 @@
+# Virtual Environment
+transcriber_env/
+
+# Database files
+*.db
+transcriber_notes.db
+data/
+
+# Vercel deployment
+.vercel/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Config files with sensitive data
+# (uncomment if config contains secrets)
+# transcriber_config.json
+
+# Temporary files
+*.tmp
+*.temp
+
+# Audio files (optional - uncomment if you don't want to track audio files)
+# *.wav
+# *.mp3
+# *.m4a
+# *.flac
+# *.ogg

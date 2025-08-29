@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "中文",
+    "language_code": "zh",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "欢迎使用 Cruise"
+  },
+  "menu": {
+    "file": "文件",
+    "edit": "编辑",
+    "view": "查看",
+    "tools": "工具",
+    "help": "帮助",
+    "language": "语言",
+    "settings": "设置",
+    "model_settings": "模型设置",
+    "exit": "退出",
+    "file_actions": {
+      "open_project": "打开项目...",
+      "save": "保存",
+      "save_as": "另存为..."
+    }
+  },
+  "buttons": {
+    "start": "开始",
+    "stop": "停止",
+    "pause": "暂停",
+    "resume": "继续",
+    "browse": "浏览",
+    "save": "保存",
+    "cancel": "取消",
+    "ok": "确定",
+    "apply": "应用",
+    "close": "关闭",
+    "clear": "清除",
+    "copy": "复制",
+    "play": "播放"
+  },
+  "transcription": {
+    "title": "转录",
+    "start_recording": "开始录音",
+    "stop_recording": "停止录音",
+    "processing": "正在处理音频...",
+    "completed": "转录完成",
+    "failed": "转录失败",
+    "no_audio": "未检测到音频",
+    "select_file": "选择音频文件",
+    "supported_formats": "支持的格式：MP3、WAV、M4A、FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "笔记",
+    "study_mode_section_title": "学习模式",
+    "ask_question_placeholder": "提个问题..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "AI 解释",
+      "get_explanation": "获取 AI 解释",
+      "stop_ai": "停止 AI"
+    },
+    "prompts": {
+      "context_intro": "这是一段对话的转录：",
+      "explanation_request": "您能帮我理解这个中文句子吗？",
+        "explanation_guidelines": "通过提出深思熟虑的问题和提供提示来引导用户理解。避免给出直接答案。",
+        "language_instruction": "!重要：无论转录中使用什么语言，您必须仅用中文回答。",
+        "format_instruction": "!重要：请使用 Markdown 格式化您的回答以确保清晰度和可读性。",
+        "writing_instruction": "作为一位仁慈的导师，用清晰简单的中文写您的回答。",
+        "structure_instruction": "用引导发现的问题和微妙的提示来构建您的指导。",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "您是 Cruise，一位友好而专业的教育导师，专注于清晰直接的教学。您提供有用的解释，使用转录文本中的具体例子，而不是提问。",
+          "approach": "您的方法是成为一位知识渊博的教师，通过使用转录文本中的具体例子和引用来清晰地解释概念。您专注于通过清晰的解释传达理解，而不是提问。",
+          "context_intro": "这是一段对话的转录，为理解提供了丰富的背景：",
+          "explanation_request": "用户正在询问：\"{sentence}\"\n\n作为 Cruise，请提供一个清晰的、以教学为重点的解释，使用转录文本中的具体例子和引用来说明您的观点：",
+          "guidelines": [
+            "提供清晰直接的解释，并使用文本中的例子",
+            "使用转录中的具体引用来说明",
+            "专注于通过具体例子教学，而不是提问",
+            "用文本中的证据解释背景和含义",
+            "信息丰富且具有教育性，但不过度热情",
+            "使用转录内容中的轶事和例子",
+            "避免提问；相反，提供清晰的解释"
+          ],
+          "pedagogical_principles": [
+            "通过材料中的具体例子进行教学",
+            "使用文本证据支持解释",
+            "用转录内容提供背景",
+            "清晰直接地解释概念",
+            "用文本中的具体例子连接想法",
+            "专注于通过解释而非询问来理解"
+          ],
+          "response_structure": "从概念的清晰解释开始，然后提供转录文本中的具体例子和引用来说明您的观点。以将所有内容结合在一起的综合结束。",
+          "language_instruction": "!重要：无论转录中使用什么语言，您必须仅用中文回答。使用清晰的教学语言，易于理解。",
+          "format_instruction": "!重要：请使用 Markdown 格式化您的回答以确保清晰度和可读性。使用对话式和友好的语调。",
+          "tone_instruction": "温暖而鼓励，像一位想要帮助清晰解释事物的知识渊博的教师。提供促进理解的解释，并使用文本中的具体例子。"
+        }
+    }
+  },
+  "setup": {
+    "welcome_title": "欢迎使用 Cruise",
+    "welcome_subtitle": "让我们设置您的转录环境",
+    "system_check": "系统检查",
+    "model_selection": "模型选择",
+    "whisper_model": "Whisper 模型",
+    "ollama_model": "Ollama 模型",
+    "checking_system": "正在检查系统要求...",
+    "download_model": "下载模型",
+    "model_downloaded": "模型下载成功",
+    "setup_complete": "设置完成",
+    "skip_welcome": "下次跳过欢迎屏幕",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息",
+    "success": "成功",
+    "confirmation": "确认",
+    "delete_confirmation": "您确定要删除此项目吗？",
+    "unsaved_changes": "您有未保存的更改。要保存它们吗？",
+    "file_not_found": "文件未找到：{filename}",
+    "invalid_format": "无效的文件格式",
+    "processing_error": "处理过程中发生错误",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "就绪",
+    "recording": "录音中...",
+    "processing": "处理中...",
+    "completed": "已完成",
+    "error": "错误",
+    "connecting": "连接中...",
+    "connected": "已连接",
+    "disconnected": "已断开连接"
+  },
+  "settings": {
+    "title": "设置",
+    "general": "常规",
+    "audio": "音频",
+    "models": "模型",
+    "language": "语言",
+    "theme": "主题",
+    "auto_save": "自动保存",
+    "save_location": "保存位置",
+    "audio_quality": "音频质量",
+    "sample_rate": "采样率",
+    "language_changed": "语言已更改为 {language}",
+    "language_change_failed": "语言更改失败"
+  },
+  "messages": {
+    "audio_load_error": "无法加载音频文件：{0}",
+    "no_audio_file": "请先选择音频文件。",
+    "project_saved": "项目保存成功。",
+    "project_save_error": "保存项目时出错：{0}",
+    "no_projects": "没有已保存的项目可打开。",
+    "project_load_error": "无法加载所选项目。",
+    "nothing_to_copy": "没有内容可复制。请先转录音频。",
+    "transcribe_first": "请先转录音频以创建笔记。",
+    "transcription_start_error": "启动转录失败：{0}",
+    "transcription_complete": "转录成功完成！",
+    "transcription_error": "转录失败：{0}",
+    "transcription_copied": "转录已复制到剪贴板！",
+    "clear_all_confirmation": "您确定要清除所有转录数据吗？"
+  },
+  "tooltips": {
+    "transcribe_audio": "转录音频",
+    "browse_for_audio_file": "浏览音频文件",
+    "play_pause_audio": "播放/暂停音频（空格键）",
+    "add_note": "添加笔记",
+    "copy_transcription": "复制转录",
+    "clear_all": "清除全部"
+  }
+}

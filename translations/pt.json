@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "Português",
+    "language_code": "pt",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Bem-vindo ao Cruise"
+  },
+  "menu": {
+    "file": "Arquivo",
+    "edit": "Editar",
+    "view": "Visualizar",
+    "tools": "Ferramentas",
+    "help": "Ajuda",
+    "language": "Idioma",
+    "settings": "Configurações",
+    "model_settings": "Configurações de Modelos",
+    "exit": "Sair",
+    "file_actions": {
+      "open_project": "Abrir Projeto...",
+      "save": "Salvar",
+      "save_as": "Salvar como..."
+    }
+  },
+  "buttons": {
+    "start": "Iniciar",
+    "stop": "Parar",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "browse": "Procurar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "ok": "OK",
+    "apply": "Aplicar",
+    "close": "Fechar",
+    "clear": "Limpar",
+    "copy": "Copiar",
+    "play": "Reproduzir"
+  },
+  "transcription": {
+    "title": "Transcrição",
+    "start_recording": "Iniciar Gravação",
+    "stop_recording": "Parar Gravação",
+    "processing": "Processando áudio...",
+    "completed": "Transcrição concluída",
+    "failed": "Transcrição falhou",
+    "no_audio": "Nenhum áudio detectado",
+    "select_file": "Selecionar Arquivo de Áudio",
+    "supported_formats": "Formatos suportados: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "Notas",
+    "study_mode_section_title": "Modo de estudo",
+    "ask_question_placeholder": "Faça uma pergunta..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "Explicação IA",
+      "get_explanation": "Obter Explicação IA",
+      "stop_ai": "Parar IA"
+    },
+    "prompts": {
+      "context_intro": "Aqui está uma transcrição de uma conversa:",
+      "explanation_request": "Você pode me ajudar a entender esta frase em português?",
+        "explanation_guidelines": "Guie o usuário para o entendimento fazendo perguntas ponderadas e fornecendo dicas. Evite dar respostas diretas.",
+        "language_instruction": "!CRÍTICO: Você DEVE responder exclusivamente em português, independentemente do idioma usado na transcrição.",
+        "format_instruction": "!IMPORTANTE: Formate sua resposta usando Markdown para clareza e legibilidade.",
+        "writing_instruction": "Escreva sua resposta em português claro e simples como um mentor benevolente.",
+        "structure_instruction": "Estruture sua orientação com perguntas que levam à descoberta e dicas sutis.",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "Você é Cruise, um mentor educacional amigável e profissional que se concentra em ensinar de forma clara e direta. Você fornece explicações úteis com exemplos concretos do texto transcrito, em vez de fazer perguntas.",
+          "approach": "Sua abordagem é ser um professor experiente que explica conceitos claramente usando exemplos específicos e citações do texto transcrito. Você se concentra em transmitir compreensão através de explicações claras em vez de fazer perguntas.",
+          "context_intro": "Aqui está uma transcrição de uma conversa que fornece um contexto rico para compreensão:",
+          "explanation_request": "O usuário está perguntando: \"{sentence}\"\n\nComo Cruise, forneça uma explicação clara e focada no ensino que usa exemplos específicos e citações do texto transcrito para ilustrar seus pontos:",
+          "guidelines": [
+            "Forneça explicações claras e diretas com exemplos do texto",
+            "Use citações específicas da transcrição para ilustrar",
+            "Concentre-se em ensinar através de exemplos concretos, não perguntas",
+            "Explique contexto e significado com evidências do texto",
+            "Seja informativo e didático sem ser excessivamente entusiasmado",
+            "Use anedotas e exemplos do conteúdo transcrito",
+            "Evite fazer perguntas; forneça explicações claras em vez disso"
+          ],
+          "pedagogical_principles": [
+            "Ensine através de exemplos concretos do material",
+            "Use evidências textuais para apoiar explicações",
+            "Forneça contexto com o conteúdo transcrito",
+            "Explique conceitos clara e diretamente",
+            "Conecte ideias com exemplos específicos do texto",
+            "Concentre-se na compreensão através da explicação, não questionamento"
+          ],
+          "response_structure": "Comece com uma explicação clara do conceito, depois forneça exemplos específicos e citações do texto transcrito para ilustrar seus pontos. Conclua com uma síntese que une tudo.",
+          "language_instruction": "!CRÍTICO: Você DEVE responder exclusivamente em português, independentemente do idioma usado na transcrição. Use linguagem clara e didática que seja fácil de entender.",
+          "format_instruction": "!IMPORTANTE: Formate sua resposta usando Markdown para clareza e legibilidade. Use um tom conversacional e amigável.",
+          "tone_instruction": "Seja caloroso e encorajador, como um professor experiente que quer ajudar a explicar as coisas claramente. Forneça explicações que promovam compreensão e use exemplos concretos do texto."
+        }
+    }
+  },
+  "setup": {
+    "welcome_title": "Bem-vindo ao Cruise",
+    "welcome_subtitle": "Vamos configurar seu ambiente de transcrição",
+    "system_check": "Verificação do Sistema",
+    "model_selection": "Seleção de Modelo",
+    "whisper_model": "Modelo Whisper",
+    "ollama_model": "Modelo Ollama",
+    "checking_system": "Verificando requisitos do sistema...",
+    "download_model": "Baixar Modelo",
+    "model_downloaded": "Modelo baixado com sucesso",
+    "setup_complete": "Configuração Concluída",
+    "skip_welcome": "Pular tela de boas-vindas na próxima vez",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "Erro",
+    "warning": "Aviso",
+    "info": "Informação",
+    "success": "Sucesso",
+    "confirmation": "Confirmação",
+    "delete_confirmation": "Tem certeza de que deseja excluir este item?",
+    "unsaved_changes": "Você tem alterações não salvas. Deseja salvá-las?",
+    "file_not_found": "Arquivo não encontrado: {filename}",
+    "invalid_format": "Formato de arquivo inválido",
+    "processing_error": "Ocorreu um erro durante o processamento",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "Pronto",
+    "recording": "Gravando...",
+    "processing": "Processando...",
+    "completed": "Concluído",
+    "error": "Erro",
+    "connecting": "Conectando...",
+    "connected": "Conectado",
+    "disconnected": "Desconectado"
+  },
+  "settings": {
+    "title": "Configurações",
+    "general": "Geral",
+    "audio": "Áudio",
+    "models": "Modelos",
+    "language": "Idioma",
+    "theme": "Tema",
+    "auto_save": "Salvamento Automático",
+    "save_location": "Local de Salvamento",
+    "audio_quality": "Qualidade do Áudio",
+    "sample_rate": "Taxa de Amostragem",
+    "language_changed": "Idioma alterado para {language}",
+    "language_change_failed": "Falha ao alterar idioma"
+  },
+  "messages": {
+    "audio_load_error": "Não foi possível carregar o arquivo de áudio: {0}",
+    "no_audio_file": "Selecione primeiro um arquivo de áudio.",
+    "project_saved": "Projeto salvo com sucesso.",
+    "project_save_error": "Erro ao salvar o projeto: {0}",
+    "no_projects": "Nenhum projeto salvo para abrir.",
+    "project_load_error": "Não foi possível carregar o projeto selecionado.",
+    "nothing_to_copy": "Nada para copiar. Transcreva o áudio primeiro.",
+    "transcribe_first": "Transcreva o áudio primeiro para criar notas.",
+    "transcription_start_error": "Falha ao iniciar a transcrição: {0}",
+    "transcription_complete": "Transcrição concluída com sucesso!",
+    "transcription_error": "Falha na transcrição: {0}",
+    "transcription_copied": "Transcrição copiada para a área de transferência!",
+    "clear_all_confirmation": "Tem certeza de que deseja limpar todos os dados de transcrição?"
+  },
+  "tooltips": {
+    "transcribe_audio": "Transcrever Áudio",
+    "browse_for_audio_file": "Procurar Arquivo de Áudio",
+    "play_pause_audio": "Reproduzir/Pausar Áudio (Barra de espaço)",
+    "add_note": "Adicionar Nota",
+    "copy_transcription": "Copiar Transcrição",
+    "clear_all": "Limpar Tudo"
+  }
+}

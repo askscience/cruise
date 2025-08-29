@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "日本語",
+    "language_code": "ja",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Cruiseへようこそ"
+  },
+  "menu": {
+    "file": "ファイル",
+    "edit": "編集",
+    "view": "表示",
+    "tools": "ツール",
+    "help": "ヘルプ",
+    "language": "言語",
+    "settings": "設定",
+    "model_settings": "モデル設定",
+    "exit": "終了",
+    "file_actions": {
+      "open_project": "プロジェクトを開く...",
+      "save": "保存",
+      "save_as": "名前を付けて保存..."
+    }
+  },
+  "buttons": {
+    "start": "開始",
+    "stop": "停止",
+    "pause": "一時停止",
+    "resume": "再開",
+    "browse": "参照",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "ok": "OK",
+    "apply": "適用",
+    "close": "閉じる",
+    "clear": "クリア",
+    "copy": "コピー",
+    "play": "再生"
+  },
+  "transcription": {
+    "title": "文字起こし",
+    "start_recording": "録音開始",
+    "stop_recording": "録音停止",
+    "processing": "音声を処理中...",
+    "completed": "文字起こし完了",
+    "failed": "文字起こし失敗",
+    "no_audio": "音声が検出されませんでした",
+    "select_file": "音声ファイルを選択",
+    "supported_formats": "対応形式: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "ノート",
+    "study_mode_section_title": "勉強モード",
+    "ask_question_placeholder": "質問する..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "AI説明",
+      "get_explanation": "AI説明を取得",
+      "stop_ai": "AI停止"
+    },
+    "prompts": {
+      "context_intro": "これは会話の文字起こしです：",
+      "explanation_request": "この日本語の文を理解するのを手伝ってもらえますか？",
+      "explanation_guidelines": "思慮深い質問をしてヒントを提供することで、ユーザーを理解に導いてください。直接的な答えを避けてください。",
+      "language_instruction": "!重要: 文字起こしで使用されている言語に関係なく、日本語でのみ回答してください。",
+      "format_instruction": "!重要: 明確性と読みやすさのためにMarkdownを使用して回答をフォーマットしてください。",
+      "writing_instruction": "親切なメンターとして、明確でシンプルな日本語で回答を書いてください。",
+      "structure_instruction": "発見につながる質問と微妙なヒントでガイダンスを構成してください。",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "あなたはCruiseです。明確で直接的な教育に焦点を当てた、親しみやすく専門的な教育メンターです。質問をするのではなく、文字起こしされたテキストから具体的な例を使って有用な説明を提供します。",
+          "approach": "あなたのアプローチは、文字起こしされたテキストから具体的な例と引用を使って概念を明確に説明する専門的な教師であることです。質問をするのではなく、明確な説明を通じて理解を伝えることに焦点を当てています。",
+          "context_intro": "これは理解のための豊富な文脈を提供する会話の文字起こしです：",
+          "explanation_request": "ユーザーは次のように質問しています：\"{sentence}\"\n\nCruiseとして、文字起こしされたテキストから具体的な例と引用を使ってあなたのポイントを説明する、明確で教育に焦点を当てた説明を提供してください：",
+          "guidelines": [
+            "テキストからの例を使って明確で直接的な説明を提供する",
+            "説明のために文字起こしから具体的な引用を使用する",
+            "質問ではなく、具体的な例を通じた教育に焦点を当てる",
+            "テキストからの証拠を使って文脈と意味を説明する",
+            "過度に熱心になることなく、情報豊富で教育的である",
+            "文字起こしされた内容からの逸話と例を使用する",
+            "質問をすることを避け、代わりに明確な説明を提供する"
+          ],
+          "pedagogical_principles": [
+            "教材からの具体的な例を通じて教える",
+            "説明を支持するためにテキストの証拠を使用する",
+            "文字起こしされた内容で文脈を提供する",
+            "概念を明確かつ直接的に説明する",
+            "テキストからの具体的な例でアイデアを結び付ける",
+            "質問ではなく説明を通じた理解に焦点を当てる"
+          ],
+          "response_structure": "概念の明確な説明から始め、次にあなたのポイントを説明するために文字起こしされたテキストから具体的な例と引用を提供します。すべてをまとめる統合で締めくくります。",
+          "language_instruction": "!重要: 文字起こしで使用されている言語に関係なく、日本語でのみ回答してください。理解しやすい明確で教育的な言語を使用してください。",
+          "format_instruction": "!重要: 明確性と読みやすさのためにMarkdownを使用して回答をフォーマットしてください。会話的で親しみやすい口調を使用してください。",
+          "tone_instruction": "物事を明確に説明するのを助けたい専門的な教師のように、温かく励ましてください。理解を促進する説明を提供し、テキストからの具体的な例を使用してください。"
+        }
+    }
+  },
+  "setup": {
+    "welcome_title": "Cruiseへようこそ",
+    "welcome_subtitle": "文字起こし環境をセットアップしましょう",
+    "system_check": "システムチェック",
+    "model_selection": "モデル選択",
+    "whisper_model": "Whisperモデル",
+    "ollama_model": "Ollamaモデル",
+    "checking_system": "システム要件を確認中...",
+    "download_model": "モデルをダウンロード",
+    "model_downloaded": "モデルのダウンロードが完了しました",
+    "setup_complete": "セットアップ完了",
+    "skip_welcome": "次回はウェルカム画面をスキップ",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "エラー",
+    "warning": "警告",
+    "info": "情報",
+    "success": "成功",
+    "confirmation": "確認",
+    "delete_confirmation": "このアイテムを削除してもよろしいですか？",
+    "unsaved_changes": "保存されていない変更があります。保存しますか？",
+    "file_not_found": "ファイルが見つかりません: {filename}",
+    "invalid_format": "無効なファイル形式",
+    "processing_error": "処理中にエラーが発生しました",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "準備完了",
+    "recording": "録音中...",
+    "processing": "処理中...",
+    "completed": "完了",
+    "error": "エラー",
+    "connecting": "接続中...",
+    "connected": "接続済み",
+    "disconnected": "切断"
+  },
+  "settings": {
+    "title": "設定",
+    "general": "一般",
+    "audio": "音声",
+    "models": "モデル",
+    "language": "言語",
+    "theme": "テーマ",
+    "auto_save": "自動保存",
+    "save_location": "保存場所",
+    "audio_quality": "音声品質",
+    "sample_rate": "サンプルレート",
+    "language_changed": "言語を{language}に変更しました",
+    "language_change_failed": "言語の変更に失敗しました"
+  },
+  "messages": {
+    "audio_load_error": "オーディオファイルを読み込めませんでした: {0}",
+    "no_audio_file": "まずオーディオファイルを選択してください。",
+    "project_saved": "プロジェクトが正常に保存されました。",
+    "project_save_error": "プロジェクトの保存中にエラーが発生しました: {0}",
+    "no_projects": "開くための保存されたプロジェクトがありません。",
+    "project_load_error": "選択されたプロジェクトを読み込めませんでした。",
+    "nothing_to_copy": "コピーするものがありません。まずオーディオを転写してください。",
+    "transcribe_first": "ノートを作成するには、まずオーディオを転写してください。",
+    "transcription_start_error": "転写の開始に失敗しました: {0}",
+    "transcription_complete": "転写が正常に完了しました！",
+    "transcription_error": "転写に失敗しました: {0}",
+    "transcription_copied": "転写がクリップボードにコピーされました！",
+    "clear_all_confirmation": "すべての転写データを削除してもよろしいですか？"
+  },
+  "tooltips": {
+    "transcribe_audio": "オーディオを転写",
+    "browse_for_audio_file": "オーディオファイルを参照",
+    "play_pause_audio": "オーディオ再生/一時停止（スペースバー）",
+    "add_note": "ノートを追加",
+    "copy_transcription": "転写をコピー",
+    "clear_all": "すべてクリア"
+  }
+}

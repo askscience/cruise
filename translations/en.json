@@ -1,0 +1,214 @@
+{
+  "_meta": {
+    "display_name": "English",
+    "language_code": "en",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Welcome to Cruise"
+  },
+  "menu": {
+    "file": "File",
+    "edit": "Edit",
+    "view": "View",
+    "tools": "Tools",
+    "help": "Help",
+    "language": "Language",
+    "settings": "Settings",
+    "model_settings": "Model Settings",
+    "exit": "Exit",
+    "file_actions": {
+      "open_project": "Open Project...",
+      "save": "Save",
+      "save_as": "Save As..."
+    }
+  },
+  "buttons": {
+    "start": "Start",
+    "stop": "Stop",
+    "pause": "Pause",
+    "resume": "Resume",
+    "browse": "Browse",
+    "save": "Save",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "apply": "Apply",
+    "close": "Close",
+    "clear": "Clear",
+    "copy": "Copy",
+    "play": "Play",
+    "delete": "Delete"
+  },
+  "transcription": {
+    "title": "Transcription",
+    "start_recording": "Start Recording",
+    "stop_recording": "Stop Recording",
+    "processing": "Processing audio...",
+    "completed": "Transcription completed",
+    "failed": "Transcription failed",
+    "no_audio": "No audio detected",
+    "select_file": "Select Audio File",
+    "supported_formats": "Supported formats: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes": "Notes",
+    "add_note": "Add Note",
+    "edit_note": "Edit Note",
+    "delete_note": "Delete Note",
+    "ask_question_placeholder": "Ask a question..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "AI Explanation",
+      "get_explanation": "Get AI Explanation",
+      "stop_ai": "Stop AI"
+    },
+    "prompts": {
+      "context_intro": "Here is a transcription of a conversation:",
+      "explanation_request": "Based on the full context of the conversation, please explain what {sentence} means:",
+      "explanation_guidelines": "Provide a clear, direct explanation of the meaning, context, and significance of the selected text. Use the full conversation context to give comprehensive understanding.",
+      "language_instruction": "!CRITICAL: You MUST respond in English only, regardless of the language used in the transcription.",
+      "format_instruction": "!IMPORTANT: Format your response using Markdown for clarity and readability.",
+      "writing_instruction": "Provide clear, direct explanations that help the user understand the meaning immediately.",
+      "structure_instruction": "Use a clear, informative approach that directly explains the meaning and context.",
+      "study_mode": {
+        "agent_name": "Cruise",
+        "personality": "You are Cruise, a friendly and professional educational mentor who guides students to discover understanding on their own. You ask thoughtful questions and provide helpful hints rather than giving direct answers.",
+        "approach": "Your approach is to be a supportive guide who helps users think through problems and discover meanings themselves. Ask questions that lead to insights and provide gentle nudges in the right direction.",
+        "context_intro": "Here is a transcription of a conversation that provides rich context for understanding:",
+        "explanation_request": "The user is asking: \"{sentence}\"\n\nAs Cruise, provide a clear, teaching-focused explanation that uses specific examples and quotes from the transcribed text to illustrate your points:",
+        "guidelines": [
+          "ALWAYS read and acknowledge the user's previous responses in the conversation",
+          "Build on what the user has already shared - don't ignore their input",
+          "If the user answered a question, acknowledge it and move forward",
+          "Focus on responding to the user's specific question or input",
+          "Use the transcription and conversation history as supporting context",
+          "Ask NEW guiding questions that lead to understanding",
+          "Provide hints and clues rather than direct answers",
+          "Use a friendly, supportive tone",
+          "Break down complex ideas into smaller, manageable parts",
+          "Celebrate insights and progress along the way"
+        ],
+        "pedagogical_principles": [
+          "Use the Socratic method - guide through questions",
+          "Provide scaffolding to support learning",
+          "Encourage active thinking and discovery",
+          "Build confidence through guided success",
+          "Connect new learning to existing knowledge",
+          "Make learning feel collaborative and engaging"
+        ],
+        "response_structure": "First, acknowledge what the user has shared or asked. Then, build on their input to guide them toward deeper understanding. Ask follow-up questions that advance the conversation, not repeat previous ones.",
+        "language_instruction": "!CRITICAL: You MUST respond in English only, regardless of the language used in the transcription. Use warm, encouraging language that makes learning feel supportive.",
+        "format_instruction": "!IMPORTANT: Format your response using Markdown for clarity and readability. Use a conversational, friendly tone.",
+        "tone_instruction": "Be warm and encouraging, like a helpful friend who wants to see you succeed. Ask questions that spark curiosity and provide gentle guidance toward understanding."
+      }
+    }
+  },
+  "setup": {
+    "welcome_title": "Welcome to Cruise",
+    "welcome_subtitle": "Let's set up your transcription environment",
+    "system_check": "System Check",
+    "model_selection": "Model Selection",
+    "whisper_model": "Whisper Model",
+    "ollama_model": "Ollama Model",
+    "checking_system": "Checking system requirements...",
+    "download_model": "Download Model",
+    "model_downloaded": "Model downloaded successfully",
+    "setup_complete": "Setup Complete",
+    "skip_welcome": "Skip welcome screen next time",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "Error",
+    "warning": "Warning",
+    "information": "Information",
+    "confirmation": "Confirmation",
+    "success": "Success",
+    "delete_project": "Delete Project",
+    "delete_confirmation": "Are you sure you want to delete this item?",
+    "delete_warning": "This will permanently remove:\n• Transcriptions\n• Notes\n• Chat history\n\nThis action cannot be undone.",
+    "unsaved_changes": "You have unsaved changes. Do you want to save them?",
+    "file_not_found": "File not found: {filename}",
+    "invalid_format": "Invalid file format",
+    "processing_error": "An error occurred while processing",
+    "model_loading_error": "Model Loading Error",
+    "invalid_file": "Invalid File",
+    "no_file": "No File",
+    "model_not_ready": "Model Not Ready",
+    "transcription_error": "Transcription Error",
+    "project_saved": "Project Saved",
+    "no_projects": "No Projects",
+    "copied": "Copied",
+    "open_project": "Open Project",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "messages": {
+    "audio_load_error": "Could not load audio file: {0}",
+    "no_audio_file": "Please select an audio file first.",
+    "project_saved": "Project saved successfully.",
+    "project_save_error": "Failed to save project: {0}",
+    "no_projects": "There are no saved projects to open.",
+    "project_load_error": "Could not load the selected project.",
+    "nothing_to_copy": "There is nothing to copy. Please transcribe audio first.",
+    "transcribe_first": "Please transcribe audio first to create notes.",
+    "transcription_start_error": "Failed to start transcription: {0}",
+    "transcription_complete": "Transcription completed successfully!",
+    "transcription_error": "Transcription failed: {0}",
+    "transcription_copied": "Transcription copied to clipboard!",
+    "clear_all_confirmation": "Are you sure you want to clear all transcription data?",
+    "select_audio_file_first": "Please select an audio file first.",
+    "transcription_model_not_loaded": "Transcription model is not loaded yet.",
+    "failed_to_start_transcription": "Failed to start transcription: {error}",
+    "transcription_completed_successfully": "Transcription completed successfully!",
+    "transcription_failed": "Transcription failed: {error}",
+    "transcription_copied_to_clipboard": "Transcription copied to clipboard!",
+    "project_saved_successfully": "Your project has been saved successfully.",
+    "no_saved_projects": "There are no saved projects to open.",
+    "could_not_load_project": "Could not load the selected project.",
+    "transcribe_audio_first": "Please transcribe audio first to create notes.",
+    "could_not_load_audio_file": "Could not load audio file: {error}",
+    "transcription_already_in_progress": "Transcription is already in progress.",
+    "transcription_error_occurred": "An error occurred during transcription:\n{error}"
+  },
+  "tooltips": {
+    "transcribe_audio": "Transcribe Audio",
+    "browse_for_audio_file": "Browse for Audio File",
+    "play_pause_audio": "Play/Pause Audio (Spacebar)",
+    "add_note": "Add Note",
+    "copy_transcription": "Copy Transcription",
+    "clear_all": "Clear All",
+    "study_mode": "Study Mode"
+  },
+  "status": {
+    "ready": "Ready",
+    "recording": "Recording...",
+    "processing": "Processing...",
+    "completed": "Completed",
+    "error": "Error",
+    "connecting": "Connecting...",
+    "connected": "Connected",
+    "disconnected": "Disconnected"
+  },
+  "settings": {
+    "general": "General",
+    "audio": "Audio",
+    "models": "Models",
+    "language": "Language",
+    "theme": "Theme",
+    "auto_save": "Auto Save",
+    "save_location": "Save Location",
+    "audio_quality": "Audio Quality",
+    "sample_rate": "Sample Rate",
+    "language_changed": "Language changed to {language}",
+    "language_change_failed": "Failed to change language"
+  }
+}

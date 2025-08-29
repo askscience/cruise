@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "Deutsch",
+    "language_code": "de",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Willkommen bei Cruise"
+  },
+  "menu": {
+    "file": "Datei",
+    "edit": "Bearbeiten",
+    "view": "Ansicht",
+    "tools": "Werkzeuge",
+    "help": "Hilfe",
+    "language": "Sprache",
+    "settings": "Einstellungen",
+    "model_settings": "Modell-Einstellungen",
+    "exit": "Beenden",
+    "file_actions": {
+      "open_project": "Projekt öffnen...",
+      "save": "Speichern",
+      "save_as": "Speichern unter..."
+    }
+  },
+  "buttons": {
+    "start": "Start",
+    "stop": "Stopp",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "browse": "Durchsuchen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "ok": "OK",
+    "apply": "Anwenden",
+    "close": "Schließen",
+    "clear": "Löschen",
+    "copy": "Kopieren",
+    "play": "Abspielen"
+  },
+  "transcription": {
+    "title": "Transkription",
+    "start_recording": "Aufnahme starten",
+    "stop_recording": "Aufnahme stoppen",
+    "processing": "Audio wird verarbeitet...",
+    "completed": "Transkription abgeschlossen",
+    "failed": "Transkription fehlgeschlagen",
+    "no_audio": "Kein Audio erkannt",
+    "select_file": "Audio-Datei auswählen",
+    "supported_formats": "Unterstützte Formate: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "Notizen",
+    "study_mode_section_title": "Lernmodus",
+    "ask_question_placeholder": "Stellen Sie eine Frage..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "KI-Erklärung",
+      "get_explanation": "KI-Erklärung erhalten",
+      "stop_ai": "KI stoppen"
+    },
+    "prompts": {
+      "context_intro": "Hier ist eine Transkription eines Gesprächs:",
+      "explanation_request": "Können Sie mir helfen, diesen Satz auf Deutsch zu verstehen?",
+      "explanation_guidelines": "Führen Sie den Benutzer zum Verständnis, indem Sie durchdachte Fragen stellen und Hinweise geben. Vermeiden Sie direkte Antworten.",
+      "language_instruction": "!KRITISCH: Du MUSST ausschließlich auf Deutsch antworten, unabhängig von der in der Transkription verwendeten Sprache.",
+      "format_instruction": "!WICHTIG: Formatiere deine Antwort mit Markdown für Klarheit und Lesbarkeit.",
+      "writing_instruction": "Schreiben Sie Ihre Antwort in klarem und einfachem Deutsch als wohlwollender Mentor.",
+      "structure_instruction": "Strukturieren Sie Ihre Führung mit Fragen, die zur Entdeckung führen, und subtilen Hinweisen.",
+      "study_mode": {
+          "agent_name": "Cruise",
+          "personality": "Du bist Cruise, ein freundlicher und professioneller Bildungsmentor, der sich darauf konzentriert, klar und direkt zu unterrichten. Du gibst hilfreiche Erklärungen mit konkreten Beispielen aus dem transkribierten Text, anstatt Fragen zu stellen.",
+          "approach": "Dein Ansatz ist es, ein sachkundiger Lehrer zu sein, der Konzepte klar erklärt, indem er spezifische Beispiele und Zitate aus dem transkribierten Text verwendet. Du konzentrierst dich darauf, Verständnis durch klare Erklärungen zu vermitteln, anstatt Fragen zu stellen.",
+          "context_intro": "Hier ist eine Transkription eines Gesprächs, die einen reichen Kontext für das Verständnis bietet:",
+          "explanation_request": "Der Benutzer fragt: \"{sentence}\"\n\nAls Cruise, gib eine klare, lehrfokussierte Erklärung, die spezifische Beispiele und Zitate aus dem transkribierten Text verwendet, um deine Punkte zu veranschaulichen:",
+          "guidelines": [
+            "Gib klare, direkte Erklärungen mit Beispielen aus dem Text",
+            "Verwende spezifische Zitate aus der Transkription zur Veranschaulichung",
+            "Konzentriere dich auf das Lehren durch konkrete Beispiele, nicht durch Fragen",
+            "Erkläre Kontext und Bedeutung mit Belegen aus dem Text",
+            "Sei informativ und lehrreich, ohne zu enthusiastisch zu sein",
+            "Verwende Anekdoten und Beispiele aus dem transkribierten Inhalt",
+            "Vermeide Fragen zu stellen; gib stattdessen klare Erklärungen"
+          ],
+          "pedagogical_principles": [
+            "Lehre durch konkrete Beispiele aus dem Material",
+            "Verwende textuelle Belege zur Unterstützung der Erklärungen",
+            "Gib Kontext mit dem transkribierten Inhalt",
+            "Erkläre Konzepte klar und direkt",
+            "Verbinde Ideen mit spezifischen Beispielen aus dem Text",
+            "Konzentriere dich auf Verständnis durch Erklärung, nicht durch Nachfragen"
+          ],
+          "response_structure": "Beginne mit einer klaren Erklärung des Konzepts, dann gib spezifische Beispiele und Zitate aus dem transkribierten Text zur Veranschaulichung deiner Punkte. Schließe mit einer Synthese ab, die alles zusammenführt.",
+          "language_instruction": "!KRITISCH: Du MUSST ausschließlich auf Deutsch antworten, unabhängig von der in der Transkription verwendeten Sprache. Verwende klare, lehrreiche Sprache, die leicht zu verstehen ist.",
+          "format_instruction": "!WICHTIG: Formatiere deine Antwort mit Markdown für Klarheit und Lesbarkeit. Verwende einen gesprächigen und freundlichen Ton.",
+          "tone_instruction": "Sei warm und ermutigend, wie ein sachkundiger Lehrer, der helfen möchte, Dinge klar zu erklären. Gib Erklärungen, die Verständnis fördern, und verwende konkrete Beispiele aus dem Text."
+        }
+    }
+  },
+  "setup": {
+    "welcome_title": "Willkommen bei Cruise",
+    "welcome_subtitle": "Lass uns deine Transkriptionsumgebung einrichten",
+    "system_check": "Systemprüfung",
+    "model_selection": "Modellauswahl",
+    "whisper_model": "Whisper-Modell",
+    "ollama_model": "Ollama-Modell",
+    "checking_system": "Systemanforderungen werden überprüft...",
+    "download_model": "Modell herunterladen",
+    "model_downloaded": "Modell erfolgreich heruntergeladen",
+    "setup_complete": "Einrichtung abgeschlossen",
+    "skip_welcome": "Willkommensbildschirm beim nächsten Mal überspringen",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "Fehler",
+    "warning": "Warnung",
+    "info": "Information",
+    "success": "Erfolg",
+    "confirmation": "Bestätigung",
+    "delete_confirmation": "Bist du sicher, dass du dieses Element löschen möchtest?",
+    "unsaved_changes": "Du hast ungespeicherte Änderungen. Möchtest du sie speichern?",
+    "file_not_found": "Datei nicht gefunden: {filename}",
+    "invalid_format": "Ungültiges Dateiformat",
+    "processing_error": "Ein Fehler ist bei der Verarbeitung aufgetreten",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "Bereit",
+    "recording": "Aufnahme läuft...",
+    "processing": "Verarbeitung läuft...",
+    "completed": "Abgeschlossen",
+    "error": "Fehler",
+    "connecting": "Verbindung wird hergestellt...",
+    "connected": "Verbunden",
+    "disconnected": "Getrennt"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "general": "Allgemein",
+    "audio": "Audio",
+    "models": "Modelle",
+    "language": "Sprache",
+    "theme": "Design",
+    "auto_save": "Automatisches Speichern",
+    "save_location": "Speicherort",
+    "audio_quality": "Audioqualität",
+    "sample_rate": "Abtastrate",
+    "language_changed": "Sprache geändert zu {language}",
+    "language_change_failed": "Sprachwechsel fehlgeschlagen"
+  },
+  "messages": {
+    "audio_load_error": "Audiodatei konnte nicht geladen werden: {0}",
+    "no_audio_file": "Bitte wählen Sie zuerst eine Audiodatei aus.",
+    "project_saved": "Projekt erfolgreich gespeichert.",
+    "project_save_error": "Fehler beim Speichern des Projekts: {0}",
+    "no_projects": "Keine gespeicherten Projekte zum Öffnen vorhanden.",
+    "project_load_error": "Das ausgewählte Projekt konnte nicht geladen werden.",
+    "nothing_to_copy": "Nichts zu kopieren. Bitte transkribieren Sie zuerst das Audio.",
+    "transcribe_first": "Bitte transkribieren Sie zuerst das Audio, um Notizen zu erstellen.",
+    "transcription_start_error": "Transkription konnte nicht gestartet werden: {0}",
+    "transcription_complete": "Transkription erfolgreich abgeschlossen!",
+    "transcription_error": "Transkription fehlgeschlagen: {0}",
+    "transcription_copied": "Transkription in die Zwischenablage kopiert!",
+    "clear_all_confirmation": "Sind Sie sicher, dass Sie alle Transkriptionsdaten löschen möchten?"
+  },
+  "tooltips": {
+    "transcribe_audio": "Audio Transkribieren",
+    "browse_for_audio_file": "Nach Audiodatei Suchen",
+    "play_pause_audio": "Audio Abspielen/Pausieren (Leertaste)",
+    "add_note": "Notiz Hinzufügen",
+    "copy_transcription": "Transkription Kopieren",
+    "clear_all": "Alles Löschen"
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "display_name": "Español",
+    "language_code": "es",
+    "version": "1.0"
+  },
+  "app": {
+    "title": "Cruise",
+    "welcome": "Bienvenido a Cruise"
+  },
+  "menu": {
+    "file": "Archivo",
+    "edit": "Editar",
+    "view": "Ver",
+    "tools": "Herramientas",
+    "help": "Ayuda",
+    "language": "Idioma",
+    "settings": "Configuración",
+    "model_settings": "Configuración de Modelos",
+    "exit": "Salir",
+    "file_actions": {
+      "open_project": "Abrir Proyecto...",
+      "save": "Guardar",
+      "save_as": "Guardar Como..."
+    }
+  },
+  "buttons": {
+    "start": "Iniciar",
+    "stop": "Detener",
+    "pause": "Pausar",
+    "resume": "Reanudar",
+    "browse": "Examinar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "ok": "Aceptar",
+    "apply": "Aplicar",
+    "close": "Cerrar",
+    "clear": "Limpiar",
+    "copy": "Copiar",
+    "play": "Reproducir"
+  },
+  "transcription": {
+    "title": "Transcripción",
+    "start_recording": "Iniciar Grabación",
+    "stop_recording": "Detener Grabación",
+    "processing": "Procesando audio...",
+    "completed": "Transcripción completada",
+    "failed": "Transcripción fallida",
+    "no_audio": "No se detectó audio",
+    "select_file": "Seleccionar Archivo de Audio",
+    "supported_formats": "Formatos soportados: MP3, WAV, M4A, FLAC"
+  },
+  "sidebar": {
+    "notes_section_title": "Notas",
+    "study_mode_section_title": "Modo de estudio",
+    "ask_question_placeholder": "Haz una pregunta..."
+  },
+  "ai": {
+    "explanation": {
+      "ai_explanation": "Explicación IA",
+      "get_explanation": "Obtener Explicación IA",
+      "stop_ai": "Detener IA"
+    },
+    "prompts": {
+        "context_intro": "Aquí hay una transcripción de una conversación:",
+        "explanation_request": "¿Puedes ayudarme a entender esta frase en español?",
+        "explanation_guidelines": "Guía al usuario hacia la comprensión haciendo preguntas reflexivas y proporcionando pistas. Evita dar respuestas directas.",
+        "language_instruction": "¡CRÍTICO: DEBES responder únicamente en español, independientemente del idioma usado en la transcripción.",
+      "format_instruction": "¡IMPORTANTE: Formatea tu respuesta usando Markdown para mayor claridad y legibilidad.",
+      "writing_instruction": "Escribe tu respuesta en español claro y simple como un mentor benevolente.",
+      "structure_instruction": "Estructura tu guía con preguntas que lleven al descubrimiento y pistas sutiles.",
+      "study_mode": {
+        "agent_name": "Cruise",
+        "personality": "Eres Cruise, un mentor educativo amigable y profesional que se enfoca en enseñar de manera clara y directa. Proporcionas explicaciones útiles usando ejemplos concretos del texto transcrito en lugar de hacer preguntas.",
+        "approach": "Tu enfoque es ser un maestro conocedor que explica claramente los conceptos usando ejemplos específicos y citas del texto transcrito. Te enfocas en proporcionar comprensión a través de explicaciones claras en lugar de hacer preguntas.",
+        "context_intro": "Aquí hay una transcripción de una conversación que proporciona un contexto rico para la comprensión:",
+        "explanation_request": "El usuario está preguntando: \"{sentence}\"\n\nComo Cruise, proporciona una explicación clara y enfocada en la enseñanza que use ejemplos específicos y citas del texto transcrito para ilustrar tus puntos:",
+        "guidelines": [
+          "Proporciona explicaciones claras y directas usando ejemplos del texto",
+          "Usa citas específicas de la transcripción para ilustrar los puntos",
+          "Enfócate en enseñar a través de ejemplos concretos, no preguntas",
+          "Explica el contexto y significado usando evidencia del texto",
+          "Sé informativo y educativo sin ser demasiado entusiasta",
+          "Usa anécdotas y ejemplos del contenido transcrito",
+          "Evita hacer preguntas; en su lugar, proporciona explicaciones claras"
+        ],
+        "pedagogical_principles": [
+          "Enseña a través de ejemplos concretos del material",
+          "Usa evidencia textual para apoyar las explicaciones",
+          "Proporciona contexto usando el contenido transcrito",
+          "Explica conceptos de manera clara y directa",
+          "Conecta ideas usando ejemplos específicos del texto",
+          "Enfócate en la comprensión a través de la explicación, no la indagación"
+        ],
+        "response_structure": "Comienza con una explicación clara del concepto, luego proporciona ejemplos específicos y citas del texto transcrito para ilustrar tus puntos. Concluye con una síntesis que conecte todo.",
+        "language_instruction": "¡CRÍTICO: DEBES responder únicamente en español, independientemente del idioma usado en la transcripción. Usa un lenguaje claro y educativo que sea fácil de entender.",
+        "format_instruction": "¡IMPORTANTE: Formatea tu respuesta usando Markdown para mayor claridad y legibilidad. Usa un tono conversacional y amigable.",
+        "tone_instruction": "Sé cálido y alentador, como un maestro conocedor que quiere ayudar a explicar las cosas claramente. Proporciona explicaciones que generen comprensión y usa ejemplos concretos del texto."
+      }
+    }
+  },
+  "setup": {
+    "welcome_title": "Bienvenido a Cruise",
+    "welcome_subtitle": "Configuremos tu entorno de transcripción",
+    "system_check": "Verificación del Sistema",
+    "model_selection": "Selección de Modelo",
+    "whisper_model": "Modelo Whisper",
+    "ollama_model": "Modelo Ollama",
+    "checking_system": "Verificando requisitos del sistema...",
+    "download_model": "Descargar Modelo",
+    "model_downloaded": "Modelo descargado exitosamente",
+    "setup_complete": "Configuración Completa",
+    "skip_welcome": "Omitir pantalla de bienvenida la próxima vez",
+    "ollama_status_installed": "Ollama is installed and running.",
+    "ollama_status_not_found": "Ollama installation not found.",
+    "ollama_status_error": "Error checking Ollama: {error}",
+    "ollama_not_installed": "Ollama not installed"
+  },
+  "dialogs": {
+    "error": "Error",
+    "warning": "Advertencia",
+    "info": "Información",
+    "success": "Éxito",
+    "confirmation": "Confirmación",
+    "delete_confirmation": "¿Estás seguro de que quieres eliminar este elemento?",
+    "unsaved_changes": "Tienes cambios sin guardar. ¿Quieres guardarlos?",
+    "file_not_found": "Archivo no encontrado: {filename}",
+    "invalid_format": "Formato de archivo inválido",
+    "processing_error": "Ocurrió un error durante el procesamiento",
+    "project": {
+      "new_project": "New Project",
+      "open_project": "Open Project",
+      "enter_project_name": "Enter project name:",
+      "new_project_placeholder": "My New Project"
+    }
+  },
+  "status": {
+    "ready": "Listo",
+    "recording": "Grabando...",
+    "processing": "Procesando...",
+    "completed": "Completado",
+    "error": "Error",
+    "connecting": "Conectando...",
+    "connected": "Conectado",
+    "disconnected": "Desconectado"
+  },
+  "settings": {
+    "title": "Configuración",
+    "general": "General",
+    "audio": "Audio",
+    "models": "Modelos",
+    "language": "Idioma",
+    "theme": "Tema",
+    "auto_save": "Guardado Automático",
+    "save_location": "Ubicación de Guardado",
+    "audio_quality": "Calidad de Audio",
+    "sample_rate": "Frecuencia de Muestreo",
+    "language_changed": "Idioma cambiado a {language}",
+    "language_change_failed": "Error al cambiar el idioma"
+  },
+  "messages": {
+    "audio_load_error": "No se pudo cargar el archivo de audio: {0}",
+    "no_audio_file": "Por favor, selecciona un archivo de audio primero.",
+    "project_saved": "Proyecto guardado exitosamente.",
+    "project_save_error": "Error al guardar el proyecto: {0}",
+    "no_projects": "No hay proyectos guardados para abrir.",
+    "project_load_error": "No se pudo cargar el proyecto seleccionado.",
+    "nothing_to_copy": "No hay nada que copiar. Por favor, transcribe el audio primero.",
+    "transcribe_first": "Por favor, transcribe el audio primero para crear notas.",
+    "transcription_start_error": "Error al iniciar la transcripción: {0}",
+    "transcription_complete": "¡Transcripción completada exitosamente!",
+    "transcription_error": "Error en la transcripción: {0}",
+    "transcription_copied": "¡Transcripción copiada al portapapeles!",
+    "clear_all_confirmation": "¿Estás seguro de que quieres borrar todos los datos de transcripción?"
+  },
+  "tooltips": {
+    "transcribe_audio": "Transcribir Audio",
+    "browse_for_audio_file": "Buscar Archivo de Audio",
+    "play_pause_audio": "Reproducir/Pausar Audio (Barra espaciadora)",
+    "add_note": "Agregar Nota",
+    "copy_transcription": "Copiar Transcripción",
+    "clear_all": "Limpiar Todo"
+  }
+}
