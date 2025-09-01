@@ -55,7 +55,7 @@ Cruise is a modern, feature-rich audio transcription application built with PySi
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/askscience/cruise.git)
    cd transcriber_rewrite
    ```
 
@@ -155,7 +155,7 @@ Studio Mode transforms Cruise into an interactive learning environment powered b
 
 ### Ollama Integration
 
-Cruise integrates with [Ollama](https://ollama.ai) to provide intelligent AI analysis of your transcriptions:
+Cruise integrates with [Ollama](https://ollama.com/) to provide intelligent AI analysis of your transcriptions:
 
 #### Supported Models
 - **Gemma 3** (1B, 4B): Fast Google models for quick analysis
