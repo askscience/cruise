@@ -55,7 +55,7 @@ Cruise is a modern, feature-rich audio transcription application built with PySi
 
 1. **Clone the repository**:
    ```bash
-   git clone [<repository-url>](https://github.com/askscience/cruise.git)
+   git clone https://github.com/askscience/cruise.git
    cd transcriber_rewrite
    ```
 
