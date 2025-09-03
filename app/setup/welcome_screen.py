@@ -500,21 +500,18 @@ class ModernSetupDialog(QDialog):
         self.ollama_status.style().polish(self.ollama_status)
     
     def populate_ollama_models(self):
-        """Populate Ollama model dropdown."""
+        """Populate Ollama model dropdown with only installed models."""
         self.ollama_combo.setEnabled(True)
-        self.download_btn.setEnabled(True)
+        self.download_btn.setEnabled(False)  # Disable download since we only show installed models
         
-        # Add installed models
+        # Add only installed models
         installed_models = self.system_checker.get_available_ollama_models()
         if installed_models:
             for model in installed_models:
                 self.ollama_combo.addItem(f"✓ {model} (installed)", model)
-        
-        # Add popular models
-        popular_models = self.system_checker.get_popular_ollama_models()
-        for model, size, desc in popular_models:
-            if model not in installed_models:
-                self.ollama_combo.addItem(f"{model} ({size}) - {desc}", model)
+        else:
+            self.ollama_combo.addItem(tr("setup.ollama_not_installed"), "")
+            self.ollama_combo.setEnabled(False)
         
         # Set current model
         current_ollama = self.config_manager.get_ollama_model()
@@ -571,9 +568,9 @@ class ModernSetupDialog(QDialog):
         if ollama_model:
             self.config_manager.set_ollama_model(ollama_model)
         
-        self.config_manager.set_setup_completed(True)
-        
+        # Only set setup_completed to True if skip checkbox is checked
         if self.skip_checkbox.isChecked():
+            self.config_manager.set_setup_completed(True)
             self.config_manager.set_skip_welcome(True)
         
         self.setup_completed.emit()
