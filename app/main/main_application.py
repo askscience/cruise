@@ -491,16 +491,87 @@ class AudioTranscriberGUI(QMainWindow):
         from PySide6.QtWidgets import QProgressDialog
         from PySide6.QtCore import Qt
         
-        self.progress_dialog = QProgressDialog("Loading Whisper model...", "Cancel", 0, 0, self)
+        # Create a more visible progress dialog
+        self.progress_dialog = QProgressDialog("Loading Whisper model...", "Cancel", 0, 100, self)
         self.progress_dialog.setWindowTitle("Model Loading")
         self.progress_dialog.setWindowModality(Qt.WindowModal)
         self.progress_dialog.setMinimumDuration(0)
         self.progress_dialog.setValue(0)
+        self.progress_dialog.setMinimumSize(400, 120)  # Make it more visible
+        self.progress_dialog.setAutoClose(False)  # Don't auto-close
+        self.progress_dialog.setAutoReset(False)  # Don't auto-reset
+        
+        # Style the progress dialog to be more prominent
+        self.progress_dialog.setStyleSheet("""
+            QProgressDialog {
+                background-color: #2b2b2b;
+                color: white;
+                border: 2px solid #4a9eff;
+                border-radius: 8px;
+            }
+            QProgressBar {
+                border: 2px solid #555;
+                border-radius: 5px;
+                text-align: center;
+                background-color: #333;
+                color: white;
+                font-weight: bold;
+                min-height: 20px;
+            }
+            QProgressBar::chunk {
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                    stop: 0 #4a9eff, stop: 1 #6bb6ff);
+                border-radius: 3px;
+            }
+            QPushButton {
+                background-color: #4a9eff;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #6bb6ff;
+            }
+        """)
+        
         self.progress_dialog.show()
+        
+        # Track progress steps
+        self.progress_step = 0
+        self.progress_steps = [
+            "Preparing to load",
+            "Configuring threading",
+            "Downloading and loading",
+            "This may take several minutes",
+            "Model loaded successfully"
+        ]
         
         def on_progress_update(message):
             if hasattr(self, 'progress_dialog') and self.progress_dialog:
                 self.progress_dialog.setLabelText(message)
+                
+                # Update progress based on message content
+                if "Preparing to load" in message:
+                    self.progress_step = 10
+                elif "Configuring threading" in message:
+                    self.progress_step = 25
+                elif "Downloading and loading" in message:
+                    self.progress_step = 40
+                elif "This may take several minutes" in message:
+                    self.progress_step = 60
+                elif "Model loaded successfully" in message:
+                    self.progress_step = 100
+                elif "Error:" in message:
+                    self.progress_step = 0
+                    self.progress_dialog.setStyleSheet(self.progress_dialog.styleSheet() + """
+                        QProgressBar::chunk {
+                            background-color: #ff4444;
+                        }
+                    """)
+                
+                self.progress_dialog.setValue(self.progress_step)
         
         def on_model_loaded(success, message):
             # Close progress dialog
