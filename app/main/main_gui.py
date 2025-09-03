@@ -697,9 +697,105 @@ class AudioTranscriberGUI(QMainWindow):
             QMessageBox.warning(self, "Warning", "Transcription is already in progress.")
             return
 
+        # Check if model is loaded, if not, load it first
+        if not self.transcription_service.model:
+            self._load_model_and_start_transcription()
+            return
+
+        self._start_transcription_with_model()
+
+    def _load_model_and_start_transcription(self):
+        """Load the Whisper model and then start transcription."""
         # Start primary button animation
         self.transcribe_button.start_border_animation()
+        
+        # Disable UI elements
+        self.transcribe_button.setEnabled(False)
+        self.play_pause_button.setEnabled(False)
+        self.copy_button.setEnabled(False)
+        self.clear_button.setEnabled(False)
+        self.browse_button.setEnabled(False)
+        
+        # Create a progress dialog
+        from PySide6.QtWidgets import QProgressDialog
+        from PySide6.QtCore import Qt
+        
+        self.progress_dialog = QProgressDialog("Loading Whisper model...", "Cancel", 0, 0, self)
+        self.progress_dialog.setWindowTitle("Model Loading")
+        self.progress_dialog.setWindowModality(Qt.WindowModal)
+        self.progress_dialog.setMinimumDuration(0)
+        self.progress_dialog.setValue(0)
+        self.progress_dialog.show()
+        
+        def on_progress_update(message):
+            if hasattr(self, 'progress_dialog') and self.progress_dialog:
+                self.progress_dialog.setLabelText(message)
+        
+        def on_model_loaded(success, message):
+            # Close progress dialog
+            if hasattr(self, 'progress_dialog') and self.progress_dialog:
+                self.progress_dialog.close()
+                self.progress_dialog = None
+            
+            if success:
+                print(f"Model loaded: {message}")
+                self._start_transcription_with_model()
+            else:
+                print(f"Model loading failed: {message}")
+                # Stop animation and re-enable buttons
+                self.transcribe_button.stop_border_animation()
+                self._enable_ui_elements()
+                
+                # Get troubleshooting suggestions
+                suggestions = self.transcription_service.get_troubleshooting_suggestions(message)
+                suggestions_text = "\n• ".join([""] + suggestions[:5])  # Show top 5 suggestions
+                
+                detailed_message = f"Failed to load Whisper model:\n{message}\n\nTroubleshooting suggestions:{suggestions_text}"
+                
+                # Create a more detailed error dialog
+                error_dialog = QMessageBox(self)
+                error_dialog.setIcon(QMessageBox.Critical)
+                error_dialog.setWindowTitle("Model Loading Error")
+                error_dialog.setText("Failed to load Whisper model")
+                error_dialog.setDetailedText(detailed_message)
+                error_dialog.setStandardButtons(QMessageBox.Ok | QMessageBox.Retry)
+                
+                # Add a "Clear Cache" button for corruption errors
+                clear_cache_button = None
+                if "corrupted" in message.lower() or "checksum" in message.lower():
+                    clear_cache_button = error_dialog.addButton("Clear Cache & Retry", QMessageBox.ActionRole)
+                
+                result = error_dialog.exec()
+                
+                # Handle user response
+                if result == QMessageBox.Retry:
+                    self._load_model_and_start_transcription()
+                elif clear_cache_button and error_dialog.clickedButton() == clear_cache_button:
+                    success, cache_message = self.transcription_service.clear_whisper_cache()
+                    if success:
+                        QMessageBox.information(self, "Cache Cleared", cache_message + "\n\nRetrying model download...")
+                        self._load_model_and_start_transcription()
+                    else:
+                        QMessageBox.warning(self, "Cache Clear Failed", cache_message)
+        
+        # Handle cancel button
+        def on_cancel():
+            if hasattr(self.transcription_service, 'model_loading_thread') and self.transcription_service.model_loading_thread:
+                self.transcription_service.model_loading_thread.terminate()
+            self.transcribe_button.stop_border_animation()
+            self._enable_ui_elements()
+        
+        self.progress_dialog.canceled.connect(on_cancel)
+        
+        self.transcription_service.load_model_with_progress(on_progress_update, on_model_loaded)
 
+    def _start_transcription_with_model(self):
+        """Start transcription with a loaded model."""
+        # Start primary button animation if not already started
+        if not hasattr(self.transcribe_button, '_animation_active') or not self.transcribe_button._animation_active:
+            self.transcribe_button.start_border_animation()
+        
+        # Disable UI elements
         self.transcribe_button.setEnabled(False)
         self.play_pause_button.setEnabled(False)
         self.copy_button.setEnabled(False)
@@ -711,10 +807,21 @@ class AudioTranscriberGUI(QMainWindow):
         self.transcription_thread.error_occurred.connect(self.on_transcription_error)
         self.transcription_thread.start()
 
+    def _enable_ui_elements(self):
+        """Re-enable UI elements after transcription or error."""
+        self.transcribe_button.setEnabled(True)
+        self.play_pause_button.setEnabled(True)
+        self.copy_button.setEnabled(True)
+        self.clear_button.setEnabled(True)
+        self.browse_button.setEnabled(True)
+
     def on_transcription_finished(self, result):
         """Handle the completion of the transcription."""
         # Stop primary button animation
         self.transcribe_button.stop_border_animation()
+        
+        # Re-enable UI elements
+        self._enable_ui_elements()
         
         self.current_transcription = result  # Store full result
         self.display_transcription_results(result)
@@ -815,10 +922,8 @@ class AudioTranscriberGUI(QMainWindow):
         # Stop primary button animation
         self.transcribe_button.stop_border_animation()
         
-        # Re-enable buttons
-        self.transcribe_button.setEnabled(True)
-        self.clear_button.setEnabled(True)
-        self.browse_button.setEnabled(True)
+        # Re-enable UI elements
+        self._enable_ui_elements()
 
         # Show error message
         QMessageBox.critical(self, "Transcription Error", f"An error occurred during transcription:\n{error_message}")

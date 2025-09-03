@@ -153,10 +153,60 @@ class MainController:
             QMessageBox.warning(self.main_window, "No File", "Please select an audio file first.")
             return
         
+        # Check if model is loaded, if not, load it first
         if not self.transcription_service.model:
-            QMessageBox.warning(self.main_window, "Model Not Ready", "Transcription model is not loaded yet.")
+            self._load_model_and_start_transcription()
             return
         
+        self._start_transcription_with_model()
+    
+    def _load_model_and_start_transcription(self):
+        """Load the Whisper model and then start transcription."""
+        # Disable transcribe button during loading
+        self.main_window.transcribe_button.setEnabled(False)
+        
+        # Create a progress dialog
+        from PySide6.QtWidgets import QProgressDialog
+        from PySide6.QtCore import Qt
+        
+        self.progress_dialog = QProgressDialog("Loading Whisper model...", "Cancel", 0, 0, self.main_window)
+        self.progress_dialog.setWindowTitle("Model Loading")
+        self.progress_dialog.setWindowModality(Qt.WindowModal)
+        self.progress_dialog.setMinimumDuration(0)
+        self.progress_dialog.setValue(0)
+        self.progress_dialog.show()
+        
+        def on_progress_update(message):
+            if hasattr(self, 'progress_dialog') and self.progress_dialog:
+                self.progress_dialog.setLabelText(message)
+        
+        def on_model_loaded(success, message):
+            # Close progress dialog
+            if hasattr(self, 'progress_dialog') and self.progress_dialog:
+                self.progress_dialog.close()
+                self.progress_dialog = None
+            
+            if success:
+                print(f"Model loaded: {message}")
+                self._start_transcription_with_model()
+            else:
+                print(f"Model loading failed: {message}")
+                # Re-enable button
+                self.main_window.transcribe_button.setEnabled(True)
+                QMessageBox.critical(self.main_window, "Model Loading Error", f"Failed to load Whisper model: {message}")
+        
+        # Handle cancel button
+        def on_cancel():
+            if hasattr(self.transcription_service, 'model_loading_thread') and self.transcription_service.model_loading_thread:
+                self.transcription_service.model_loading_thread.terminate()
+            self.main_window.transcribe_button.setEnabled(True)
+        
+        self.progress_dialog.canceled.connect(on_cancel)
+        
+        self.transcription_service.load_model_with_progress(on_progress_update, on_model_loaded)
+    
+    def _start_transcription_with_model(self):
+        """Start transcription with a loaded model."""
         try:
             self.transcription_thread = self.transcription_service.create_transcription_thread(
                 self.current_file_path
@@ -174,6 +224,8 @@ class MainController:
             self.transcription_thread.start()
             
         except Exception as e:
+            # Re-enable button on error
+            self.main_window.transcribe_button.setEnabled(True)
             QMessageBox.critical(self.main_window, "Transcription Error", f"Failed to start transcription: {str(e)}")
     
     def on_transcription_complete(self, result):
