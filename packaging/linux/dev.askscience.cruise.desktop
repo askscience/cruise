@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Cruise
+Exec=cruise-linux
+Icon=dev.askscience.cruise
+Type=Application
+Categories=AudioVideo;Audio;

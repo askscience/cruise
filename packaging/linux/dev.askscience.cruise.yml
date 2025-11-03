@@ -1,0 +1,40 @@
+app-id: dev.askscience.cruise
+runtime: org.freedesktop.Sdk
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: cruise-linux
+finish-args:
+  # Permissions for GUI, audio, etc.
+  - "--socket=x11"
+  - "--share=ipc"
+  - "--device=all"
+
+modules:
+  # This module installs all Python dependencies from requirements.txt
+  - name: cruise-dependencies
+    buildsystem: simple
+    build-commands:
+      # Force a compatible NumPy version
+      - pip3 install "numpy<2"
+      # Install everything else into the /app directory inside the Flatpak
+      - pip3 install --prefix=/app -r /run/build/cruise/requirements.txt
+    sources:
+      # Use the local source code from the project root
+      - type: dir
+        path: ../.. 
+
+  # This module builds the executable using the source code
+  - name: cruise-app
+    buildsystem: simple
+    build-commands:
+      # Install PyInstaller in the build environment
+      - pip3 install pyinstaller
+      # Build the one-file executable
+      - pyinstaller --onefile --name cruise-linux launcher.py
+      # Install the final files into the correct locations inside the Flatpak
+      - install -D dist/cruise-linux /app/bin/cruise-linux
+      - install -D packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
+      - install -D packaging/linux/dev.askscience.cruise.png /app/share/icons/hicolor/128x128/apps/dev.askscience.cruise.png
+    sources:
+      - type: dir
+        path: ../..
