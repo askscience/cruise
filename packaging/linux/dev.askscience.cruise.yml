@@ -1,40 +1,84 @@
 app-id: dev.askscience.cruise
-runtime: org.freedesktop.Sdk
+runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-command: cruise-linux
+command: cruise
+
 finish-args:
-  # Permissions for GUI, audio, etc.
-  - "--socket=x11"
-  - "--share=ipc"
-  - "--device=all"
+  # Network access
+  - --share=network
+  
+  # GUI access
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
+  
+  # Audio access
+  - --socket=pulseaudio
+  
+  # File system access (adjust as needed for your app)
+  - --filesystem=home
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-music
+  
+  # Device access (if needed for audio/video)
+  - --device=all
+  
+  # System bus access (if needed)
+  # - --system-talk-name=org.freedesktop.NetworkManager
 
 modules:
-  # This module installs all Python dependencies from requirements.txt
-  - name: cruise-dependencies
+  # Python runtime
+  - name: python3
     buildsystem: simple
     build-commands:
-      # Force a compatible NumPy version
-      - pip3 install "numpy<2"
-      # Install everything else into the /app directory inside the Flatpak
-      - pip3 install --prefix=/app -r /run/build/cruise/requirements.txt
+      - pip3 install --prefix=/app --no-deps .
     sources:
-      # Use the local source code from the project root
-      - type: dir
-        path: ../.. 
+      - type: archive
+        url: https://www.python.org/ftp/python/3.9.18/Python-3.9.18.tar.xz
+        sha256: d4de37fe8360e54c0d5d13f12d6d1eb1c8ff94e015d2f48d8c5c3e8c31f4f8f3
 
-  # This module builds the executable using the source code
-  - name: cruise-app
+  # FFmpeg (for audio processing)
+  - name: ffmpeg
+    config-opts:
+      - --enable-shared
+      - --disable-static
+      - --disable-doc
+      - --disable-programs
+      - --enable-libopus
+      - --enable-libvorbis
+    sources:
+      - type: archive
+        url: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+        sha256: 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+
+  # Your application
+  - name: cruise
     buildsystem: simple
     build-commands:
-      # Install PyInstaller in the build environment
-      - pip3 install pyinstaller
-      # Build the one-file executable
-      - pyinstaller --onefile --name cruise-linux launcher.py
-      # Install the final files into the correct locations inside the Flatpak
-      - install -D dist/cruise-linux /app/bin/cruise-linux
-      - install -D packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
-      - install -D packaging/linux/dev.askscience.cruise.png /app/share/icons/hicolor/128x128/apps/dev.askscience.cruise.png
+      # Install Python dependencies
+      - pip3 install --prefix=/app --no-deps -r requirements.txt
+      
+      # Copy application files
+      - mkdir -p /app/lib/cruise
+      - cp -r * /app/lib/cruise/
+      
+      # Create launcher script
+      - |
+        cat > /app/bin/cruise << 'EOF'
+        #!/bin/bash
+        cd /app/lib/cruise
+        python3 launcher.py "$@"
+        EOF
+      - chmod +x /app/bin/cruise
+      
+      # Install desktop file and icon
+      - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
+      - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
+    
     sources:
-      - type: dir
-        path: ../..
+      - type: git
+        url: https://github.com/askscience/cruise.git
+        branch: master
