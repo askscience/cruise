@@ -1,5 +1,6 @@
 # Virtual Environment
 transcriber_env/
+venv/
 
 # Database files
 *.db

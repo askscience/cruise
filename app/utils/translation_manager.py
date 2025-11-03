@@ -5,6 +5,7 @@ Provides internationalization support using JSON-based translation files.
 
 import json
 import os
+import sys
 from typing import Dict, Optional, Any
 from pathlib import Path
 from PySide6.QtCore import QObject, Signal, QLocale, QCoreApplication
@@ -23,16 +24,48 @@ class TranslationManager(QObject):
         self.current_language = "en"
         self.translations: Dict[str, Dict[str, Any]] = {}
         self.fallback_language = "en"
-        self.translations_dir = Path(__file__).parent.parent.parent / "translations"
         
-        # Ensure translations directory exists
-        self.translations_dir.mkdir(exist_ok=True)
+        # Determine translations directory for both development and packaged environments
+        self.translations_dir = self._get_translations_dir()
         
         # Load available translations
         self._load_all_translations()
         
         # Set initial language based on system locale
         self._set_initial_language()
+    
+    def _get_translations_dir(self) -> Path:
+        """Get the translations directory, handling both development and packaged environments."""
+        # Try to get the application directory
+        app = QCoreApplication.instance()
+        if app and hasattr(app, 'applicationDirPath'):
+            app_dir = Path(app.applicationDirPath())
+            
+            # Check if we're running in a bundled app (macOS .app)
+            if sys.platform == 'darwin' and '.app' in str(app_dir):
+                # In macOS app bundle, translations are in Resources/translations
+                resources_dir = app_dir.parent.parent / "Resources"
+                translations_path = resources_dir / "translations"
+                if translations_path.exists():
+                    return translations_path
+            
+            # Check for translations next to the executable
+            translations_path = app_dir / "translations"
+            if translations_path.exists():
+                return translations_path
+        
+        # Fallback to development path (relative to this file)
+        development_path = Path(__file__).parent.parent.parent / "translations"
+        if development_path.exists():
+            return development_path
+        
+        # Last resort: try current working directory
+        cwd_path = Path.cwd() / "translations"
+        if cwd_path.exists():
+            return cwd_path
+        
+        # If none exist, return the development path anyway (it will be created if possible)
+        return development_path
     
     def _load_all_translations(self):
         """Load all available translation files."""
@@ -138,9 +171,9 @@ class TranslationManager(QObject):
         # Return the value as-is (can be str, list, dict, etc.)
         return current
     
-    def tr(self, key: str, **kwargs) -> str:
-        """Shorthand for translate method."""
-        return self.translate(key, **kwargs)
+    def tr(self, key: str, disambiguation: str | None = None, n: int = -1) -> str:
+        """Override QObject.tr method to use our translation system."""
+        return self.translate(key)
 
 
 # Global translation manager instance
