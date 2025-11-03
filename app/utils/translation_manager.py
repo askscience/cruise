@@ -6,7 +6,7 @@ Provides internationalization support using JSON-based translation files.
 import json
 import os
 import sys
-from typing import Dict, Optional, Any
+from typing import Dict, Optional, Any, Union
 from pathlib import Path
 from PySide6.QtCore import QObject, Signal, QLocale, QCoreApplication
 
@@ -171,7 +171,7 @@ class TranslationManager(QObject):
         # Return the value as-is (can be str, list, dict, etc.)
         return current
     
-    def tr(self, key: str, disambiguation: str | None = None, n: int = -1) -> str:
+    def tr(self, key: str, disambiguation: Union[str, None] = None, n: int = -1) -> str:
         """Override QObject.tr method to use our translation system."""
         return self.translate(key)
 
