@@ -18,33 +18,25 @@ finish-args:
   - --device=all
 
 modules:
-  # This module reads the generated JSON file to build all Python dependencies.
-  # It is the standard and correct way to handle pip dependencies in Flatpak.
   - name: python-dependencies
     buildsystem: simple
     build-commands:
-      # The pip-requirements.txt is generated automatically by flatpak-builder
-      # from the JSON source, ensuring all packages are installed.
       - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r pip-requirements.txt
     sources:
-      - type: generated-sources
+      - type: file
         path: python-deps.json
-        generator: flatpak-pip-generator
 
-  # This module builds your actual application code.
   - name: cruise
     buildsystem: simple
     build-commands:
-      # Install the application source code from the git checkout
       - install -d /app/lib/cruise
       - cp -a . /app/lib/cruise/
-      # Create the executable launcher script
-      - install -Dm755 /dev/stdin /app/bin/cruise <<'EOF'
-      #!/bin/sh
-      exec python3 /app/lib/cruise/launcher.py "$@"
-      EOF
-      # Install metadata (desktop file and icon)
-      - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/
+      - |
+        install -Dm755 /dev/stdin /app/bin/cruise <<'EOF'
+        #!/bin/sh
+        exec python3 /app/lib/cruise/launcher.py "$@"
+        EOF
+      - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
       - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
     sources:
       - type: git
