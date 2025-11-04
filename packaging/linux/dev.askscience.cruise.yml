@@ -2,72 +2,138 @@ app-id: dev.askscience.cruise
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.rust-stable
 command: cruise
 
 finish-args:
   # Network access
   - --share=network
-  
   # GUI access
   - --share=ipc
   - --socket=x11
   - --socket=wayland
   - --socket=fallback-x11
-  
   # Audio access
   - --socket=pulseaudio
-  
   # File system access
   - --filesystem=home
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-music
-  
   # Device access
   - --device=all
 
 modules:
-  # Use pip to install Python dependencies directly
   - name: python3-pip-packages
     buildsystem: simple
     build-commands:
-      - pip3 install --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} openai-whisper torch torchaudio numpy ffmpeg-python PySide6 pygame mutagen soundfile Markdown Pygments requests
+      # Install all dependencies from the downloaded sources
+      - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r /run/build/python3-pip-packages/requirements.txt
     sources:
+      # Manually added requirements.txt for the build command
+      - type: file
+        path: requirements.txt
+        dest-filename: requirements.txt
+        
+      # Build dependencies (must come before packages that need them)
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.5.1.tar.gz
+        sha256: e87b311753c15392170305a27c95e13d9655f416d82046f4e6f981e74a8966c8
+
+      # Dependencies from requirements.txt and their sub-dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/o/openai-whisper/openai-whisper-20231117.tar.gz
-        sha256: 7af424181436f1800cc0b7d75cf40ede34e9ddf1ba4983a910832fcf4aade4a4
+        sha256: 0a66dcf1c4c11f7c355c46b52899475d40cafc167d36359052b95b355a494e1e
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/t/torch/torch-2.3.1.tar.gz
+        sha256: 2929a3a1a5b822ba45d4e132c1c73e2150b27216a673b06320428514856b3e36
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/t/torchaudio/torchaudio-2.3.1.tar.gz
+        sha256: 0a283995f0a719d36b8c8a66f7f50a8b965f97312386966a33748286284cf6b8
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/n/numpy/numpy-1.26.4.tar.gz
+        sha256: 2865a5b10629d81358c2274431e5f8f53a9f4c330f57d667eb8e34afcbaaa952
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/f/ffmpeg-python/ffmpeg-python-0.2.0.tar.gz
+        sha256:e6d5b0789d62d9894e63f685c407851a704e6c310b809a7b936d634289a42f6c
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/P/PySide6/PySide6-6.7.0.tar.gz
+        sha256:229656157f208ac208764028cf5e2f70f64c1c91c33f2b4c1064f260175b3c3c
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/p/pygame/pygame-2.5.2.tar.gz
+        sha256: 80e81c0b2c78f566aca3d6b05e3f43b355883626354b574a4acb415a995e6f66
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/m/mutagen/mutagen-1.47.0.tar.gz
+        sha256:1a58a7413620f32145b2f4bf6d0f8d0354c4146059e663a7589d97ac2c5d14e3
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/s/soundfile/soundfile-0.12.1.tar.gz
+        sha256:f7f892305e75121c2104523d44365b2a2656722d992f8021c3569a74a15a3a41
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-3.6.tar.gz
+        sha256:15a815754406c596041e17d74f35b452e8505e6b72a4f0003b5b2a59e959b392
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.18.0.tar.gz
+        sha256:1a361c4f1073b664183a31e84a291f09623d53775f0a3d4638a16ed6a43d9247
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/r/requests/requests-2.31.0.tar.gz
+        sha256:942c5a758f98d790eaed1a70141c21425d57257c5a31a4f3b54378ab3140a8a6
+      # Additional sub-dependencies
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/t/triton/triton-2.3.1.tar.gz
+        sha256: 18a24551015f89e1877fca2d3cadd0b2097a315065401b3b28b76a666f7f2b1c
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/t/tiktoken/tiktoken-0.7.0.tar.gz
+        sha256:27565b8258e7af2127116e3c91a238626a7b203a27299a8e3f9c5220dfa72e25
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/f/filelock/filelock-3.14.0.tar.gz
+        sha256:1620244e6d42d32a4497e8f1f0088564c2a4f491cbf8911c1d428135832a8848
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/t/typing_extensions/typing_extensions-4.12.0.tar.gz
+        sha256:de73fe3f089602a5078423f859817e8022a1013778007a5180c55866164f69f2
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/s/sympy/sympy-1.12.tar.gz
+        sha256:a23610c115e128b92b8d002f251c1f7f13c6f60a6a2a0e4a0b22a65bd296f7c1
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.3.tar.gz
+        sha256:39a5450e185c7c13a23a35f11183c5098a543f063a129d27f8a3794b15c4a4a5
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-3.1.4.tar.gz
+        sha256:49a029ee629c42c262a0a2a537d0c8340d866a87c1f81d5b364d9b4b0c72e276
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-2.1.5.tar.gz
+        sha256:c353777d61b40a3203672015d862f90f235882e35a1251a37ab527f4228b3c37
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/c/certifi/certifi-2024.6.2.tar.gz
+        sha256:25b6c7a10a5a2283850085a5a1f2fa9552d7e90c8a32a68c07ac7523f03b2f5d
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/c/charset-normalizer/charset-normalizer-3.3.2.tar.gz
+        sha256:3d387346850d3ab51419a43a6bc6dd7a7605d15c7ff26b6451a3a49216170d10
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/i/idna/idna-3.7.tar.gz
+        sha256:a681a57518b52a506d8719001a1d3f945536125a0740a32c45fe14f0a02a012a
+      - type: file
+        url: https://files.pythonhosted.org/packages/source/u/urllib3/urllib3-2.2.1.tar.gz
+        sha256:683bb64d856f663f733f3810135d5543c8a98d36357f1309f3e4c4146a41f02c
 
-  # Your application
   - name: cruise
     buildsystem: simple
     build-commands:
-      # Copy application files
-      - mkdir -p /app/lib/cruise
-      - cp -r *.py /app/lib/cruise/ || true
-      - cp -r requirements.txt /app/lib/cruise/ || true
-      - cp -r packaging /app/lib/cruise/ || true
-      
-      # Install Python dependencies from requirements.txt
-      - pip3 install --prefix=/app -r requirements.txt || true
-      
-      # Create launcher script
-      - |
-        mkdir -p /app/bin
-        cat > /app/bin/cruise << 'EOF'
-        #!/bin/bash
-        cd /app/lib/cruise
-        exec python3 launcher.py "$@"
-        EOF
-      - chmod +x /app/bin/cruise
-      
-      # Install desktop file and icon if they exist
-      - mkdir -p /app/share/applications
-      - mkdir -p /app/share/icons/hicolor/256x256/apps
-      - test -f packaging/linux/dev.askscience.cruise.desktop && install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop || true
-      - test -f packaging/linux/cruise-icon.png && install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png || true
-    
+      # Install the application files into the /app directory
+      - install -d /app/bin
+      - install -d /app/lib/cruise
+      - cp -r . /app/lib/cruise/
+
+      # Create a launcher script in /app/bin
+      - install -Dm755 /dev/stdin /app/bin/cruise <<'EOF'
+      #!/bin/sh
+      cd /app/lib/cruise
+      exec python3 launcher.py "$@"
+      EOF
+
+      # Install desktop file and icon
+      - install -d /app/share/applications
+      - install -d /app/share/icons/hicolor/256x256/apps
+      - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
+      - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
     sources:
       - type: git
         url: https://github.com/askscience/cruise.git
