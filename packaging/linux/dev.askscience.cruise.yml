@@ -21,7 +21,7 @@ modules:
   - name: python-dependencies
     buildsystem: simple
     build-commands:
-      - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r pip-requirements.txt
+      - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r requirements.txt
     sources:
       - type: file
         path: python-deps.json
@@ -37,7 +37,7 @@ modules:
         exec python3 /app/lib/cruise/launcher.py "$@"
         EOF
       - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
-      - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
+      - install -Dm644 packaging/linux/cruise.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
     sources:
       - type: git
         url: https://github.com/askscience/cruise.git
