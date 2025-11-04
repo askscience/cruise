@@ -5,36 +5,27 @@ sdk: org.freedesktop.Sdk
 command: cruise
 
 finish-args:
-  # Network access
   - --share=network
-  # GUI access
   - --share=ipc
   - --socket=x11
   - --socket=wayland
   - --socket=fallback-x11
-  # Audio access
   - --socket=pulseaudio
-  # File system access
   - --filesystem=home
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-music
-  # Device access
   - --device=all
 
 modules:
-  - name: python3-pip-packages
+  - name: python3-dependencies
     buildsystem: simple
     build-commands:
-      # Install all packages by name. Pip will find them in the sources below.
       - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} openai-whisper torch torchaudio numpy ffmpeg-python PySide6 pygame mutagen soundfile Markdown Pygments requests
     sources:
-      # Build dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.5.1.tar.gz
         sha256: e87b311753c15392170305a27c95e13d9655f416d82046f4e6f981e74a8966c8
-
-      # Dependencies from requirements.txt and their sub-dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/o/openai-whisper/openai-whisper-20231117.tar.gz
         sha256: 0a66dcf1c4c11f7c355c46b52899475d40cafc167d36359052b95b355a494e1e
@@ -113,15 +104,12 @@ modules:
     build-commands:
       # Install the application source code
       - install -d /app/lib/cruise
-      - cp -r . /app/lib/cruise/
-
-      # Create the launcher script
-      - install -d /app/bin
-      - echo '#!/bin/sh' > /app/bin/cruise
-      - echo 'cd /app/lib/cruise' >> /app/bin/cruise
-      - echo 'exec python3 launcher.py "$@"' >> /app/bin/cruise
-      - chmod a+x /app/bin/cruise
-
+      - cp -a . /app/lib/cruise/
+      # Create the executable launcher script
+      - install -Dm755 /dev/stdin /app/bin/cruise <<'EOF'
+      #!/bin/sh
+      exec python3 /app/lib/cruise/launcher.py "$@"
+      EOF
       # Install metadata files
       - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
       - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
