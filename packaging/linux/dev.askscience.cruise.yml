@@ -26,13 +26,9 @@ modules:
   - name: python3-pip-packages
     buildsystem: simple
     build-commands:
-      # Install all dependencies from the downloaded sources using the requirements file
-      - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r /run/build/python3-pip-packages/requirements.txt
+      # Install all packages by name. Pip will find them in the sources below.
+      - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} openai-whisper torch torchaudio numpy ffmpeg-python PySide6 pygame mutagen soundfile Markdown Pygments requests
     sources:
-      # Add the requirements.txt file to the build environment for pip
-      - type: file
-        path: requirements.txt
-
       # Build dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.5.1.tar.gz
@@ -75,7 +71,6 @@ modules:
       - type: file
         url: https://files.pythonhosted.org/packages/source/r/requests/requests-2.31.0.tar.gz
         sha256:942c5a758f98d790eaed1a70141c21425d57257c5a31a4f3b54378ab3140a8a6
-      # Additional sub-dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/t/triton/triton-2.3.1.tar.gz
         sha256: 18a24551015f89e1877fca2d3cadd0b2097a315065401b3b28b76a666f7f2b1c
@@ -120,7 +115,7 @@ modules:
       - install -d /app/lib/cruise
       - cp -r . /app/lib/cruise/
 
-      # Create the launcher script using simple, sequential commands
+      # Create the launcher script
       - install -d /app/bin
       - echo '#!/bin/sh' > /app/bin/cruise
       - echo 'cd /app/lib/cruise' >> /app/bin/cruise
