@@ -32,7 +32,7 @@ modules:
       # Add the requirements.txt file to the build environment for pip
       - type: file
         path: requirements.txt
-        
+
       # Build dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.5.1.tar.gz
@@ -116,20 +116,18 @@ modules:
   - name: cruise
     buildsystem: simple
     build-commands:
-      # Copy all source files into the app directory
+      # Install the application source code
       - install -d /app/lib/cruise
       - cp -r . /app/lib/cruise/
 
-      # Correctly create the launcher script using a YAML literal block
-      - |
-        install -d /app/bin
-        cat > /app/bin/cruise <<EOF
-        #!/bin/sh
-        exec python3 /app/lib/cruise/launcher.py "$@"
-        EOF
-        chmod +x /app/bin/cruise
+      # Create the launcher script using simple, sequential commands
+      - install -d /app/bin
+      - echo '#!/bin/sh' > /app/bin/cruise
+      - echo 'cd /app/lib/cruise' >> /app/bin/cruise
+      - echo 'exec python3 launcher.py "$@"' >> /app/bin/cruise
+      - chmod a+x /app/bin/cruise
 
-      # Install desktop file and icon
+      # Install metadata files
       - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
       - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
     sources:
