@@ -26,15 +26,14 @@ modules:
   - name: python3-pip-packages
     buildsystem: simple
     build-commands:
-      # Install all dependencies from the downloaded sources
+      # Install all dependencies from the downloaded sources using the requirements file
       - pip3 install --isolated --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST} -r /run/build/python3-pip-packages/requirements.txt
     sources:
-      # Manually added requirements.txt for the build command
+      # Add the requirements.txt file to the build environment for pip
       - type: file
         path: requirements.txt
-        dest-filename: requirements.txt
         
-      # Build dependencies (must come before packages that need them)
+      # Build dependencies
       - type: file
         url: https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-69.5.1.tar.gz
         sha256: e87b311753c15392170305a27c95e13d9655f416d82046f4e6f981e74a8966c8
@@ -117,21 +116,20 @@ modules:
   - name: cruise
     buildsystem: simple
     build-commands:
-      # Install the application files into the /app directory
-      - install -d /app/bin
+      # Copy all source files into the app directory
       - install -d /app/lib/cruise
       - cp -r . /app/lib/cruise/
 
-      # Create a launcher script in /app/bin
-      - install -Dm755 /dev/stdin /app/bin/cruise <<'EOF'
-      #!/bin/sh
-      cd /app/lib/cruise
-      exec python3 launcher.py "$@"
-      EOF
+      # Correctly create the launcher script using a YAML literal block
+      - |
+        install -d /app/bin
+        cat > /app/bin/cruise <<EOF
+        #!/bin/sh
+        exec python3 /app/lib/cruise/launcher.py "$@"
+        EOF
+        chmod +x /app/bin/cruise
 
       # Install desktop file and icon
-      - install -d /app/share/applications
-      - install -d /app/share/icons/hicolor/256x256/apps
       - install -Dm644 packaging/linux/dev.askscience.cruise.desktop /app/share/applications/dev.askscience.cruise.desktop
       - install -Dm644 packaging/linux/cruise-icon.png /app/share/icons/hicolor/256x256/apps/dev.askscience.cruise.png
     sources:
