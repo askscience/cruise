@@ -43,26 +43,48 @@ class TranslationManager(QObject):
             
             # Check if we're running in a bundled app (macOS .app)
             if sys.platform == 'darwin' and '.app' in str(app_dir):
-                # In macOS app bundle, translations can be in Resources/translations
+                # In macOS app bundle, try multiple locations
+                # 1. Resources/translations (standard location)
                 resources_dir = app_dir.parent.parent / "Resources"
                 translations_path = resources_dir / "translations"
                 if translations_path.exists():
+                    print(f"Found translations in Resources: {translations_path}")
                     return translations_path
                 
-                # Or next to the executable
+                # 2. Next to the executable in Contents/MacOS
                 translations_path = app_dir / "translations"
                 if translations_path.exists():
+                    print(f"Found translations next to executable: {translations_path}")
+                    return translations_path
+                
+                # 3. In the app bundle root
+                app_root = app_dir.parent.parent
+                translations_path = app_root / "translations"
+                if translations_path.exists():
+                    print(f"Found translations in app root: {translations_path}")
                     return translations_path
             
-            # Check for translations next to the executable
+            # Check for translations next to executable (other platforms)
             translations_path = app_dir / "translations"
             if translations_path.exists():
+                print(f"Found translations next to executable: {translations_path}")
                 return translations_path
         
         # Fallback to development path (relative to this file)
         development_path = Path(__file__).parent.parent.parent / "translations"
         if development_path.exists():
+            print(f"Using development translations path: {development_path}")
             return development_path
+        
+        # Last resort: try current working directory
+        cwd_path = Path.cwd() / "translations"
+        if cwd_path.exists():
+            print(f"Using cwd translations path: {cwd_path}")
+            return cwd_path
+        
+        # If none exist, print warning and return development path anyway
+        print(f"Warning: No translations directory found, using fallback: {development_path}")
+        return development_path
         
         # Last resort: try current working directory
         cwd_path = Path.cwd() / "translations"
@@ -74,31 +96,52 @@ class TranslationManager(QObject):
     
     def _load_all_translations(self):
         """Load all available translation files."""
+        print(f"Loading translations from: {self.translations_dir}")
+        
         if not self.translations_dir.exists():
+            print(f"Translations directory does not exist: {self.translations_dir}")
             return
             
-        for file_path in self.translations_dir.glob("*.json"):
+        translation_files = list(self.translations_dir.glob("*.json"))
+        print(f"Found translation files: {translation_files}")
+        
+        for file_path in translation_files:
             language_code = file_path.stem
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     self.translations[language_code] = json.load(f)
+                    print(f"Loaded translation: {language_code}")
             except (json.JSONDecodeError, FileNotFoundError) as e:
                 print(f"Error loading translation file {file_path}: {e}")
+        
+        print(f"Available languages: {list(self.translations.keys())}")
     
     def _set_initial_language(self):
         """Set initial language from config or system locale."""
         config_manager = ConfigManager()
         language_code = config_manager.get_language()
+        
+        print(f"Config language: {language_code}")
+        print(f"Available translations: {list(self.translations.keys())}")
 
         if language_code in self.translations:
             self.current_language = language_code
+            print(f"Using config language: {language_code}")
         else:
             system_locale = QLocale.system().name()
             language_code = system_locale.split('_')[0]
+            print(f"System locale: {system_locale}, language code: {language_code}")
+            
             if language_code in self.translations:
                 self.current_language = language_code
+                print(f"Using system language: {language_code}")
             elif self.fallback_language in self.translations:
                 self.current_language = self.fallback_language
+                print(f"Using fallback language: {self.fallback_language}")
+            else:
+                print(f"Warning: No translations available, using raw keys")
+        
+        print(f"Final current language: {self.current_language}")
     
     def get_available_languages(self) -> Dict[str, str]:
         """Get list of available languages with their display names."""

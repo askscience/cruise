@@ -123,11 +123,14 @@ class AudioTranscriberGUI(QMainWindow):
                            Qt.WindowType.WindowMinimizeButtonHint | Qt.WindowType.WindowMaximizeButtonHint)
         
     def create_menu(self):
-        """Create the main menu bar."""
+        """Create main menu bar."""
+        print("Creating menu bar...")
         menu_bar = self.menuBar()
         
         # File menu
-        self.file_menu = menu_bar.addMenu("&" + self.translation_manager.translate("menu.file"))
+        file_text = self.translation_manager.translate("menu.file")
+        print(f"File menu text: '{file_text}'")
+        self.file_menu = menu_bar.addMenu("&" + file_text)
 
         self.open_action = self.file_menu.addAction(self.translation_manager.translate("menu.file_actions.open_project"))
         self.open_action.triggered.connect(self.open_project)
