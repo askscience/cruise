@@ -718,7 +718,7 @@ class AudioWaveformWidget(QWidget):
             
             # Use reasonable bubble width that allows for good text display
             # but doesn't take the entire widget width
-            max_bubble_width = min(600, available_width * 0.8)  # Max 600px or 80% of available width
+            max_bubble_width = min(400, available_width * 0.6)  # Max 400px or 60% of available width
             
             layout = {
                 'zone_height': zone_height,
@@ -1763,7 +1763,7 @@ class AudioWaveformWidget(QWidget):
         top_margin = 15
         timestamp_height = 20
         bottom_margin = 15
-        min_bubble_width = 160
+        min_bubble_width = 120
 
         # Precompute bubble geometry per annotation
         precomputed = []
