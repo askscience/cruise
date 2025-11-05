@@ -43,9 +43,14 @@ class TranslationManager(QObject):
             
             # Check if we're running in a bundled app (macOS .app)
             if sys.platform == 'darwin' and '.app' in str(app_dir):
-                # In macOS app bundle, translations are in Resources/translations
+                # In macOS app bundle, translations can be in Resources/translations
                 resources_dir = app_dir.parent.parent / "Resources"
                 translations_path = resources_dir / "translations"
+                if translations_path.exists():
+                    return translations_path
+                
+                # Or next to the executable
+                translations_path = app_dir / "translations"
                 if translations_path.exists():
                     return translations_path
             
