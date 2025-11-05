@@ -1,7 +1,7 @@
 {
   "whisper_model": "base",
   "ollama_model": "gemma3:1b",
-  "setup_completed": false,
-  "language": "en",
-  "skip_welcome": false
+  "setup_completed": true,
+  "language": "it",
+  "skip_welcome": true
 }

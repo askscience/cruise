@@ -31,6 +31,7 @@ os.environ['MKL_NUM_THREADS'] = '1'
 os.environ['NUMEXPR_NUM_THREADS'] = '1'
 os.environ['OPENBLAS_NUM_THREADS'] = '1'
 os.environ['VECLIB_MAXIMUM_THREADS'] = '1'
+os.environ['QT_MAC_WANTS_LAYER'] = '1'
 
 # Disable OpenMP before any imports
 try:

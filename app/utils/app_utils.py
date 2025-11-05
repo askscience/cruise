@@ -701,9 +701,9 @@ class AudioWaveformWidget(QWidget):
         """Get or calculate dynamic layout that adapts to window size."""
         current_size = (rect.width(), rect.height())
         
-        # Check if we need to recalculate layout
+        # Force recalculation of layout to ensure bubble width changes take effect
         if (self.last_rect_size != current_size or 
-            current_size not in self.layout_cache):
+            current_size not in self.layout_cache or True):  # Always recalc for now
             
             # Calculate optimal layout for current window size
             available_height = rect.height() - 60  # Adaptive margin
@@ -718,7 +718,7 @@ class AudioWaveformWidget(QWidget):
             
             # Use reasonable bubble width that allows for good text display
             # but doesn't take the entire widget width
-            max_bubble_width = min(400, available_width * 0.6)  # Max 400px or 60% of available width
+            max_bubble_width = min(300, available_width * 0.5)  # Max 300px or 50% of available width
             
             layout = {
                 'zone_height': zone_height,
@@ -1763,7 +1763,7 @@ class AudioWaveformWidget(QWidget):
         top_margin = 15
         timestamp_height = 20
         bottom_margin = 15
-        min_bubble_width = 120
+        min_bubble_width = 80
 
         # Precompute bubble geometry per annotation
         precomputed = []
@@ -1772,12 +1772,19 @@ class AudioWaveformWidget(QWidget):
             start_time = annotation.get('start_time', 0)
             text = annotation.get('text', '')
 
-            single_line_width = fm.horizontalAdvance(text) + 2 * text_margin
-            bubble_width = min(layout['max_bubble_width'], max(min_bubble_width, single_line_width))
-            bubble_width = min(bubble_width, available_width)
+            # Calculate bubble size based on natural text size (no forced wrapping)
+            text_bounds = fm.boundingRect(QRect(0, 0, 10000, 10000), Qt.TextFlag.TextWordWrap, text)
+            natural_text_width = text_bounds.width()
+            natural_text_height = text_bounds.height()
+            
+            # Use the natural text width with small padding, but allow reasonable limits
+            bubble_width = min(natural_text_width + 2 * text_margin, available_width * 0.7)
+            bubble_width = max(bubble_width, 60)  # Minimum reasonable width
+            
 
-            # Wrapped text height within content width
-            content_width = max(10, bubble_width - 2 * text_margin)
+            
+            # Calculate height based on the actual bubble width
+            content_width = bubble_width - 2 * text_margin
             text_bounds = fm.boundingRect(QRect(0, 0, int(content_width), 10000), Qt.TextFlag.TextWordWrap, text)
             text_height = text_bounds.height()
 
