@@ -1,5 +1,5 @@
 {
-  "whisper_model": "large",
+  "whisper_model": "base",
   "ollama_model": "gemma3:1b",
   "setup_completed": false,
   "language": "en",

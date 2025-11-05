@@ -1,7 +1,7 @@
 openai-whisper
 torch
 torchaudio
-numpy
+numpy<2
 ffmpeg-python
 PySide6
 pygame
